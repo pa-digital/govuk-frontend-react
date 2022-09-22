@@ -12,6 +12,7 @@
 *.log
 .DS_Store
 .cache
+*.lock
 
 #packages
 *.tgz
