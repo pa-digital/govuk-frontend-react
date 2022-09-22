@@ -1,0 +1,123 @@
+import { Meta } from '@storybook/addon-docs';
+
+<Meta title="Components/Input/Information" />
+
+<h2>Inputs</h2>
+
+<p>
+  User inputs for text can come as a standard html input, a text area or an
+  counter text input.
+</p>
+
+<p>All inputs have the following common attributes:</p>
+
+<ul>
+  <li>Label - contains the element label</li>
+  <li>Hint - contains a hint to assist the user</li>
+  <li>
+    Multi Question - adjusts the label to not contain an H1 tag to be compliant
+  </li>
+  <li>Error - displays the error and configures all aria attributes</li>
+  <li>Value - Pre selected value</li>
+  <li>Spell Check - applies the users browser spell checking</li>
+  <li>Disabled - renders the input as disabled</li>
+</ul>
+
+<h3>Text Input</h3>
+<p>
+  Use the text input component when you need to let users enter text that’s no
+  longer than a single line, such as their name or phone number.
+</p>
+
+<p>
+  You can view the full implementation details on the{' '}
+  <a
+    href="https://design-system.service.gov.uk/components/text-input/"
+    target="_blank"
+    rel="noreferrer"
+  >
+    text input
+  </a>{' '}
+  section of the GDS website.
+</p>
+
+<p>The Text Input contains the following extra options:</p>
+
+<ul>
+  <li>
+    Input Type - sets the type of input, configuration can be
+    <ul>
+      <li>default - text</li>
+      <li>password</li>
+      <li>email</li>
+      <li>numeric</li>
+    </ul>
+  </li>
+  <li>Prefix - applies a styled prefix to the input</li>
+  <li>Suffix - applies a styled suffix to the input</li>
+  <li>Auto Complete - allows an html auto-complete value to be applied</li>
+  <li>
+    Width - allows preset GDS text input widths to be applied <i>1-10</i>
+  </li>
+</ul>
+
+<h3>Text Area</h3>
+
+<p>
+  Use the textarea component when you need to let users enter an amount of text
+  that’s longer than a single line.
+</p>
+
+<p>
+  You can view the full implementation details on the{' '}
+  <a
+    href="https://design-system.service.gov.uk/components/textarea/"
+    target="_blank"
+    rel="noreferrer"
+  >
+    text area
+  </a>{' '}
+  section of the GDS website.
+</p>
+
+<p>The Text Area contains the following extra options:</p>
+
+<ul>
+  <li>
+    Rows - specifies the number of rows that the text area initially is rendered
+    with
+  </li>
+</ul>
+
+<h3>Text Character Count</h3>
+
+<p>
+  Help users know how much text they can enter when there is a limit on the
+  number of characters.
+</p>
+
+<p>
+  You can view the full implementation details on the{' '}
+  <a
+    href="https://design-system.service.gov.uk/components/character-count/"
+    target="_blank"
+    rel="noreferrer"
+  >
+    character count
+  </a>{' '}
+  section of the GDS website.
+</p>
+
+<p>The Text Character Count contains the following extra options:</p>
+
+<ul>
+  <li>
+    Counter Type - specifies the type of counting:
+    <ul>
+      <li>Character - counts the individual characters</li>
+      <li>Word - counts the text split into words</li>
+    </ul>
+  </li>
+  <li>Max Count - determines the maximum number of countable elements</li>
+  <li>Threshold - Optional - hides the warning until this value is met</li>
+</ul>

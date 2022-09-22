@@ -1,0 +1,49 @@
+import { Meta } from '@storybook/addon-docs';
+
+<Meta title="Components/Checkboxlist/Information" />
+
+<h2>Checkbox list</h2>
+
+<p>Use the checkbox list component to let users select one or more optionst.</p>
+
+<p>
+  You can view the full implementation details on the{' '}
+  <a
+    href="https://design-system.service.gov.uk/components/checkboxes/"
+    target="_blank"
+    rel="noreferrer"
+  >
+    Checkboxes
+  </a>{' '}
+  section of the GDS website.
+</p>
+
+<h2>Options</h2>
+
+<p>The Checkbox list can be configured using the following:</p>
+
+<ul>
+  <li>Label - contains the element label</li>
+  <li>Pre Checked - allows checkboxes to be pre-checked</li>
+  <li>Compact - reduces the overall size of the checkboxes</li>
+  <li>
+    MultiQuestion - adjusts the label to not contain an H1 tag to be compliant
+  </li>
+  <li>
+    Divider - provides a divider in the checkbox list - defaults to "or" but can
+    be overridden
+  </li>
+  <li>Hints - contains hints for the overall checkox and each item</li>
+  <li>Error - displays the error and configures all aria attributes</li>
+</ul>
+
+<h2>Helper Functions</h2>
+
+<h3>mapCheckBoxListToArray</h3>
+
+<p>
+  There is a helper function "mapCheckBoxListToArray" that will map the checkbox
+  list to an array of string containing the values for all checked checkboxes
+</p>
+
+<pre>mapCheckBoxListToArray(data: CheckBoxDataProps[]): string[]</pre>
