@@ -1,4 +1,4 @@
-import '../dist/gdsfrontend.css';
+import '../dist/govuk-frontend-react.css';
 export const parameters = {
   actions: { argTypesRegex: '^on[A-Z].*' },
   controls: {

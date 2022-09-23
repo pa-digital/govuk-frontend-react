@@ -1,7 +1,7 @@
 {
   // see https://www.typescriptlang.org/tsconfig to better understand tsconfigs
   "include": ["src", "types", "assets"],
-  "exclude": ["src/stories", "src/setupTests.ts", "src/UI", "src/Helper"],
+  "exclude": ["src/stories"],
   "types": ["node", "jest"],
   "compilerOptions": {
     "module": "esnext",

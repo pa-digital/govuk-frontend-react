@@ -6,7 +6,11 @@
 
 #production
 /build
-/dist
+
+#dev
+/src/Helper
+/src/stories
+/src/UI
 
 #misc
 *.log
@@ -14,6 +18,3 @@
 .cache
 *.lock
 .npmrc
-
-#packages
-*.tgz

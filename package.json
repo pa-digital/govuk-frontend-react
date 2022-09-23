@@ -1,6 +1,5 @@
 {
   "version": "0.1.12",
-  "license": "MIT",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
   "files": [
@@ -40,19 +39,26 @@
     "singleQuote": true,
     "trailingComma": "es5"
   },
-  "name": "gdsfrontend",
+  "name": "@pa-digital/govuk-frontend-react",
   "author": "Andrew Marshall",
-  "module": "dist/gdsfrontend.esm.js",
+  "module": "dist/govuk-frontend-react.esm.js",
   "size-limit": [
     {
-      "path": "dist/gdsfrontend.min.js",
+      "path": "dist/govuk-frontend-react.min.js",
       "limit": "10 KB"
     },
     {
-      "path": "dist/gdsfrontend.esm.js",
+      "path": "dist/govuk-frontend-react.esm.js",
       "limit": "10 KB"
     }
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pa-digital/govuk-frontend-react.git"
+  },
+  "publishConfig": {
+    "registry": "@pa-digital/https://npm.pkg.github.com"
+  },
   "devDependencies": {
     "@babel/core": "^7.19.0",
     "@size-limit/preset-small-lib": "^8.0.1",
