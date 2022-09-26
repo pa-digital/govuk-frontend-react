@@ -56,9 +56,6 @@
     "type": "git",
     "url": "https://github.com/pa-digital/govuk-frontend-react.git"
   },
-  "publishConfig": {
-    "registry": "@pa-digital/https://npm.pkg.github.com"
-  },
   "devDependencies": {
     "@babel/core": "^7.19.0",
     "@size-limit/preset-small-lib": "^8.0.1",
