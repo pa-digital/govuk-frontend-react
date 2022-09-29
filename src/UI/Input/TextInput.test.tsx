@@ -4,7 +4,7 @@ import {
   screen,
   axe,
   toHaveNoViolations,
-  fireEvent,
+  userEvent,
 } from '../../Helper/testHelper';
 import { TextInput } from './TextInput';
 
@@ -556,6 +556,7 @@ describe('Input functions correctly', () => {
     expect(input).toHaveValue('this is the value');
   });
   it('input onChange must fire correctly', async () => {
+    window.document.getSelection = jest.fn();
     const mockOnChange = jest.fn();
     const mockOnBlur = jest.fn();
     render(
@@ -569,12 +570,13 @@ describe('Input functions correctly', () => {
     const input = await screen.findByRole('textbox');
     expect(input).toBeInTheDocument();
 
-    fireEvent.change(input, { target: { value: '23' } });
+    await userEvent.type(input, '23');
     expect(input).toHaveValue('23');
 
-    expect(mockOnChange).toHaveBeenCalledTimes(1);
+    expect(mockOnChange).toHaveBeenCalledTimes(2);
   });
   it('input onBlur must fire correctly', async () => {
+    window.document.getSelection = jest.fn();
     const mockOnChange = jest.fn();
     const mockOnBlur = jest.fn();
     render(
@@ -588,8 +590,7 @@ describe('Input functions correctly', () => {
     const input = await screen.findByRole('textbox');
     expect(input).toBeInTheDocument();
 
-    fireEvent.focus(input);
-    fireEvent.blur(input);
+    input.blur();
     expect(input).toHaveValue('');
 
     expect(mockOnBlur).toHaveBeenCalledTimes(1);

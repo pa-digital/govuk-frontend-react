@@ -4,7 +4,7 @@ import {
   screen,
   axe,
   toHaveNoViolations,
-  fireEvent,
+  userEvent,
 } from '../../Helper/testHelper';
 import { TextCounter } from './TextCounter';
 
@@ -198,6 +198,7 @@ describe('Text Counter renders correctly for all configurations', () => {
 
 describe('Text Counter functions correctly for all configurations', () => {
   it('input must correctly update character count', async () => {
+    window.document.getSelection = jest.fn();
     const mockOnChange = jest.fn();
     const mockOnBlur = jest.fn();
     render(
@@ -214,7 +215,8 @@ describe('Text Counter functions correctly for all configurations', () => {
     const input = await screen.findByLabelText('label');
     expect(input).toBeInTheDocument();
 
-    fireEvent.change(input, { target: { value: '23' } });
+    await userEvent.type(input, '23');
+
     expect(input).toHaveValue('23');
 
     const updatedCount = await screen.findByText(
@@ -224,6 +226,7 @@ describe('Text Counter functions correctly for all configurations', () => {
   });
 
   it('input must correctly update word count', async () => {
+    window.document.getSelection = jest.fn();
     const mockOnChange = jest.fn();
     const mockOnBlur = jest.fn();
     render(
@@ -240,22 +243,24 @@ describe('Text Counter functions correctly for all configurations', () => {
     const input = await screen.findByLabelText('label');
     expect(input).toBeInTheDocument();
 
-    fireEvent.change(input, { target: { value: 'text' } });
-    expect(input).toHaveValue('text');
+    await userEvent.type(input, 'test');
+    expect(input).toHaveValue('test');
 
     const nonUpdatedCount = await screen.findByText(
       'You have 49 words remaining'
     );
     expect(nonUpdatedCount).toBeInTheDocument();
 
-    fireEvent.change(input, { target: { value: 'multi word text' } });
-    expect(input).toHaveValue('multi word text');
+    await userEvent.type(input, ' multi word text');
 
-    const updatedCount = await screen.findByText('You have 47 words remaining');
+    expect(input).toHaveValue('test multi word text');
+
+    const updatedCount = await screen.findByText('You have 46 words remaining');
     expect(updatedCount).toBeInTheDocument();
   });
 
   it('input must correctly show word count with threshold for character configuration', async () => {
+    window.document.getSelection = jest.fn();
     const mockOnChange = jest.fn();
     const mockOnBlur = jest.fn();
     render(
@@ -273,23 +278,24 @@ describe('Text Counter functions correctly for all configurations', () => {
     const input = await screen.findByLabelText('label');
     expect(input).toBeInTheDocument();
 
-    fireEvent.change(input, { target: { value: '1' } });
+    await userEvent.type(input, '1');
     expect(input).toHaveValue('1');
     let nonUpdatedCount = screen.queryByText('You have 9 characters remaining');
     expect(nonUpdatedCount).not.toBeInTheDocument();
 
-    fireEvent.change(input, { target: { value: '12' } });
+    await userEvent.type(input, '2');
     expect(input).toHaveValue('12');
     nonUpdatedCount = screen.queryByText('You have 8 characters remaining');
     expect(nonUpdatedCount).not.toBeInTheDocument();
 
-    fireEvent.change(input, { target: { value: '123' } });
+    await userEvent.type(input, '3');
     expect(input).toHaveValue('123');
     nonUpdatedCount = screen.queryByText('You have 7 characters remaining');
     expect(nonUpdatedCount).toBeInTheDocument();
   });
 
   it('input must correctly show word count with threshold for word configuration', async () => {
+    window.document.getSelection = jest.fn();
     const mockOnChange = jest.fn();
     const mockOnBlur = jest.fn();
     render(
@@ -307,17 +313,17 @@ describe('Text Counter functions correctly for all configurations', () => {
     const input = await screen.findByLabelText('label');
     expect(input).toBeInTheDocument();
 
-    fireEvent.change(input, { target: { value: 'this' } });
+    await userEvent.type(input, 'this');
     expect(input).toHaveValue('this');
     let nonUpdatedCount = screen.queryByText('You have 4 words remaining');
     expect(nonUpdatedCount).not.toBeInTheDocument();
 
-    fireEvent.change(input, { target: { value: 'this is' } });
+    await userEvent.type(input, ' is');
     expect(input).toHaveValue('this is');
     nonUpdatedCount = screen.queryByText('You have 3 words remaining');
     expect(nonUpdatedCount).not.toBeInTheDocument();
 
-    fireEvent.change(input, { target: { value: 'this is a' } });
+    await userEvent.type(input, ' a');
     expect(input).toHaveValue('this is a');
     nonUpdatedCount = screen.queryByText('You have 2 words remaining');
     expect(nonUpdatedCount).toBeInTheDocument();

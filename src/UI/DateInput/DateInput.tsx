@@ -43,6 +43,7 @@ export function DateInput({
   const [dateInputValue, setDateInputValue] = useState<DateInputState>(
     value || { day: '', month: '', year: '' }
   );
+  const [initialDateSet, setinitialDateSet] = useState(true);
   const containerAttr = {
     className: error
       ? 'govuk-form-group govuk-form-group--error'
@@ -84,7 +85,10 @@ export function DateInput({
   };
 
   useEffect(() => {
-    onValueChange(dateInputValue);
+    if (!initialDateSet) {
+      onValueChange(dateInputValue);
+    }
+    setinitialDateSet(false);
   }, [dateInputValue]);
 
   const updateDayChangeElement = (e: React.ChangeEvent<HTMLInputElement>) => {

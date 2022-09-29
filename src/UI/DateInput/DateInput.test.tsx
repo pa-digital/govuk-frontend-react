@@ -4,8 +4,7 @@ import {
   screen,
   axe,
   toHaveNoViolations,
-  fireEvent,
-  act,
+  userEvent,
 } from '../../Helper/testHelper';
 import { DateInput, errorTypeEnum } from './DateInput';
 
@@ -435,6 +434,7 @@ describe('Input functions correctly', () => {
     expect(dayInput).toHaveValue('');
     expect(monthInput).toHaveValue('');
     expect(yearInput).toHaveValue('');
+    expect(mockOnValueChange).toHaveBeenCalledTimes(0);
   });
   it('input must be correctly populate value when set', async () => {
     const mockOnValueChange = jest.fn();
@@ -453,8 +453,10 @@ describe('Input functions correctly', () => {
     expect(dayInput).toHaveValue('1');
     expect(monthInput).toHaveValue('2');
     expect(yearInput).toHaveValue('1980');
+    expect(mockOnValueChange).toHaveBeenCalledTimes(0);
   });
   it('date input must be correctly updated when day value changed', async () => {
+    window.document.getSelection = jest.fn();
     const mockOnValueChange = jest.fn();
     render(
       <DateInput
@@ -466,11 +468,11 @@ describe('Input functions correctly', () => {
 
     const dayInput = screen.getByLabelText('Day');
     expect(dayInput).toHaveValue('');
-    act(() => {
-      fireEvent.change(dayInput, { target: { value: '1' } });
-    });
+
+    await userEvent.type(dayInput, '1');
+
     expect(dayInput).toHaveValue('1');
-    expect(mockOnValueChange).toHaveBeenCalledTimes(2);
+    expect(mockOnValueChange).toHaveBeenCalledTimes(1);
     expect(mockOnValueChange).toHaveBeenLastCalledWith({
       day: '1',
       month: '',
@@ -478,6 +480,7 @@ describe('Input functions correctly', () => {
     });
   });
   it('date input must not be updated when day value blurred', async () => {
+    window.document.getSelection = jest.fn();
     const mockOnValueChange = jest.fn();
     render(
       <DateInput
@@ -490,18 +493,12 @@ describe('Input functions correctly', () => {
 
     const dayInput = screen.getByLabelText('Day');
     expect(dayInput).toHaveValue('1');
-    act(() => {
-      fireEvent.blur(dayInput);
-    });
+    dayInput.blur();
     expect(dayInput).toHaveValue('1');
-    expect(mockOnValueChange).toHaveBeenCalledTimes(2);
-    expect(mockOnValueChange).toHaveBeenLastCalledWith({
-      day: '1',
-      month: '2',
-      year: '1980',
-    });
+    expect(mockOnValueChange).toHaveBeenCalledTimes(0);
   });
   it('date input must be correctly updated when month value changed', async () => {
+    window.document.getSelection = jest.fn();
     const mockOnValueChange = jest.fn();
     render(
       <DateInput
@@ -512,11 +509,9 @@ describe('Input functions correctly', () => {
     );
 
     const monthInput = screen.getByLabelText('Month');
-    act(() => {
-      fireEvent.change(monthInput, { target: { value: '2' } });
-    });
+    await userEvent.type(monthInput, '2');
     expect(monthInput).toHaveValue('2');
-    expect(mockOnValueChange).toHaveBeenCalledTimes(2);
+    expect(mockOnValueChange).toHaveBeenCalledTimes(1);
     expect(mockOnValueChange).toHaveBeenLastCalledWith({
       day: '',
       month: '2',
@@ -524,6 +519,7 @@ describe('Input functions correctly', () => {
     });
   });
   it('date input must not be updated when month value blurred', async () => {
+    window.document.getSelection = jest.fn();
     const mockOnValueChange = jest.fn();
     render(
       <DateInput
@@ -536,18 +532,12 @@ describe('Input functions correctly', () => {
 
     const monthInput = screen.getByLabelText('Month');
     expect(monthInput).toHaveValue('2');
-    act(() => {
-      fireEvent.blur(monthInput);
-    });
+    monthInput.blur();
     expect(monthInput).toHaveValue('2');
-    expect(mockOnValueChange).toHaveBeenCalledTimes(2);
-    expect(mockOnValueChange).toHaveBeenLastCalledWith({
-      day: '1',
-      month: '2',
-      year: '1980',
-    });
+    expect(mockOnValueChange).toHaveBeenCalledTimes(0);
   });
   it('date input must be correctly updated when year value changed', async () => {
+    window.document.getSelection = jest.fn();
     const mockOnValueChange = jest.fn();
     render(
       <DateInput
@@ -558,11 +548,9 @@ describe('Input functions correctly', () => {
     );
 
     const yearInput = screen.getByLabelText('Year');
-    act(() => {
-      fireEvent.change(yearInput, { target: { value: '1980' } });
-    });
+    await userEvent.type(yearInput, '1980');
     expect(yearInput).toHaveValue('1980');
-    expect(mockOnValueChange).toHaveBeenCalledTimes(2);
+    expect(mockOnValueChange).toHaveBeenCalledTimes(4);
     expect(mockOnValueChange).toHaveBeenLastCalledWith({
       day: '',
       month: '',
@@ -570,6 +558,7 @@ describe('Input functions correctly', () => {
     });
   });
   it('date input must not be updated when year value blurred', async () => {
+    window.document.getSelection = jest.fn();
     const mockOnValueChange = jest.fn();
     render(
       <DateInput
@@ -582,15 +571,8 @@ describe('Input functions correctly', () => {
 
     const yearInput = screen.getByLabelText('Year');
     expect(yearInput).toHaveValue('1980');
-    act(() => {
-      fireEvent.blur(yearInput);
-    });
+    yearInput.blur();
     expect(yearInput).toHaveValue('1980');
-    expect(mockOnValueChange).toHaveBeenCalledTimes(2);
-    expect(mockOnValueChange).toHaveBeenLastCalledWith({
-      day: '1',
-      month: '2',
-      year: '1980',
-    });
+    expect(mockOnValueChange).toHaveBeenCalledTimes(0);
   });
 });
