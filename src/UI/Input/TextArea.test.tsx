@@ -5,6 +5,7 @@ import {
   axe,
   toHaveNoViolations,
   userEvent,
+  fireEvent,
 } from '../../Helper/testHelper';
 import { TextArea } from './TextArea';
 
@@ -448,8 +449,8 @@ describe('Input functions correctly', () => {
     );
     const input = await screen.findByRole('textbox');
     expect(input).toBeInTheDocument();
-
-    input.blur();
+    fireEvent.focus(input);
+    fireEvent.blur(input);
     expect(input).toHaveValue('');
 
     expect(mockOnBlur).toHaveBeenCalledTimes(1);

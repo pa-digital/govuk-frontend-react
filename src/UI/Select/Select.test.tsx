@@ -5,6 +5,7 @@ import {
   axe,
   toHaveNoViolations,
   userEvent,
+  fireEvent,
 } from '../../Helper/testHelper';
 import { Select, SelectDataProps } from './Select';
 
@@ -373,8 +374,8 @@ describe('Changing selected value functions correctly', () => {
     const select = await screen.findByRole('combobox');
     expect(select).toBeInTheDocument();
 
-    select.focus();
-    select.blur();
+    fireEvent.focus(select);
+    fireEvent.blur(select);
     expect(select).toHaveValue('');
 
     expect(mockOnBlur).toHaveBeenCalledTimes(1);
