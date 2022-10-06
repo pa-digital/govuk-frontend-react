@@ -14,6 +14,8 @@ yarn build # generates the distributable package
 yarn storybook # starts the storybook instance
 ```
 
+You can view the storybook <a href="https://pa-digital.github.io/govuk-frontend-react/?path=/story/introduction--page" target="_blank">here</a>
+
 ## Local NPM use
 
 If you just with to use the package as is direct from the repository then simply run the commands below in a single terminal window
@@ -52,4 +54,3 @@ Once all code is covered and tests are passing you can now build and package the
 yarn build # generates the distributable package
 yarn pack # creates an npm package
 ```
-# gdsfrontend
