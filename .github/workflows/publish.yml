@@ -19,7 +19,5 @@ jobs:
           scope: '@pa-digital'
       - run: yarn
       - run: yarn publish
-      - run: yarn deploy-storybook -- --ci
         env:
           NODE_AUTH_TOKEN: ${{ secrets.PACKAGE_TOKEN }}
-          GH_TOKEN: ${{ secrets.PACKAGE_TOKEN }}
