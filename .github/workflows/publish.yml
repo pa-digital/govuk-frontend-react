@@ -2,10 +2,10 @@ name: Publish Package
 on:
   release:
     types: [created]
-    
+
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
-  
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -19,5 +19,7 @@ jobs:
           scope: '@pa-digital'
       - run: yarn
       - run: yarn publish
+      - run: yarn deploy-storybook -- --ci
         env:
           NODE_AUTH_TOKEN: ${{ secrets.PACKAGE_TOKEN }}
+          GH_TOKEN: ${{ secrets.PACKAGE_TOKEN }}
