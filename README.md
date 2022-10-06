@@ -29,7 +29,7 @@ yarn pack # creates an npm package
 After installing the npm package you will need to reference the style
 
 ```bash
-@import "/node_modules/gdsfrontend/dist/gdsfrontend.css";
+@import "node_modules/@pa-digital/govuk-frontend-react/dist/govuk-frontend-react.css";
 ```
 
 ## Alterations to the project
