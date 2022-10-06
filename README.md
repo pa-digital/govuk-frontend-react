@@ -14,7 +14,7 @@ yarn build # generates the distributable package
 yarn storybook # starts the storybook instance
 ```
 
-You can view the storybook <a href="https://pa-digital.github.io/govuk-frontend-react/?path=/story/introduction--page" target="_blank">here</a>
+You can view the storybook <a href="https://pa-digital.github.io/govuk-frontend-react/?path=/story/introduction--page" target="_blank" rel="noopener">here</a>
 
 ## Local NPM use
 
