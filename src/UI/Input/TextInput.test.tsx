@@ -7,6 +7,7 @@ import {
   userEvent,
   fireEvent,
 } from '../../Helper/testHelper';
+import { TextInputWidth } from './InputCommon';
 import { TextInput } from './TextInput';
 
 expect.extend(toHaveNoViolations);
@@ -159,21 +160,38 @@ describe('Input renders correctly', () => {
     expect(input).toHaveAttribute('aria-invalid', 'false');
   });
 
-  it('input must correctly add width class', async () => {
+  it('input must correctly add fluid width class', async () => {
     const mockOnChange = jest.fn();
     const mockOnBlur = jest.fn();
     render(
       <TextInput
         label="label text"
         identifier="inputName"
-        width={5}
+        width={TextInputWidth.FluidFull}
         onChange={mockOnChange}
         onBlur={mockOnBlur}
       />
     );
     const input = await screen.findByLabelText('label text');
     expect(input).toBeInTheDocument();
-    expect(input).toHaveClass('govuk-input govuk-input--width-5');
+    expect(input).toHaveClass('govuk-input govuk-!-width-full');
+  });
+
+  it('input must correctly add char width class', async () => {
+    const mockOnChange = jest.fn();
+    const mockOnBlur = jest.fn();
+    render(
+      <TextInput
+        label="label text"
+        identifier="inputName"
+        width={TextInputWidth.Char10}
+        onChange={mockOnChange}
+        onBlur={mockOnBlur}
+      />
+    );
+    const input = await screen.findByLabelText('label text');
+    expect(input).toBeInTheDocument();
+    expect(input).toHaveClass('govuk-input govuk-input--width-10');
   });
 
   it('input must have type attribute set correctly for a password input', async () => {

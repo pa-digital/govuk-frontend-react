@@ -14,13 +14,43 @@ export interface BaseTextInputProps {
   value?: string;
 }
 
+export enum TextInputWidth {
+  FluidFull = 1,
+  FluidThreeQuarters=2,
+  FluidTwoThirds=3,
+  FluidHalf=4,
+  FluidThird=5,
+  FluidQuarter=6,
+  Char20=7,
+  Char10=8,
+  Char5=9,
+  Char4=10,
+  Char3=11,
+  Char2=12
+}
+
+export const TextInputWidthClass = new Map<number, string>([
+  [TextInputWidth.FluidFull, "govuk-!-width-full"],
+  [TextInputWidth.FluidThreeQuarters,"govuk-!-width-three-quarters"],
+  [TextInputWidth.FluidTwoThirds, "govuk-!-width-two-thirds"],
+  [TextInputWidth.FluidHalf, "govuk-!-width-one-half"],
+  [TextInputWidth.FluidThird, "govuk-!-width-one-third"],
+  [TextInputWidth.FluidQuarter, "govuk-!-width-one-quarter"],
+  [TextInputWidth.Char20, "govuk-input--width-20"],
+  [TextInputWidth.Char10, "govuk-input--width-10"],
+  [TextInputWidth.Char5,"govuk-input--width-5"],
+  [TextInputWidth.Char4, "govuk-input--width-4"],
+  [TextInputWidth.Char3, "govuk-input--width-3"],
+  [TextInputWidth.Char2, "govuk-input--width-2"]
+]);
+
 export interface TextInputProps extends BaseTextInputProps {
   inputMode?: 'numeric';
   inputType?: 'password' | 'email';
   prefix?: string;
   suffix?: string;
   autoComplete?: string;
-  width?: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10;
+  width?: TextInputWidth;
   inErrorState?: boolean;
   onChange: (value: ChangeEvent<HTMLInputElement>) => void;
   onBlur: (value: FocusEvent<HTMLInputElement>) => void;

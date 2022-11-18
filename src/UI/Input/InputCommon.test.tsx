@@ -1,4 +1,4 @@
-import { buildCounterText, countCharacters, countWords } from './InputCommon';
+import { buildCounterText, countCharacters, countWords, TextInputWidth, TextInputWidthClass } from './InputCommon';
 
 describe.each([
   ['', 0],
@@ -128,6 +128,29 @@ describe.each([
       expect(result.message).toEqual(expectedResult.message);
       expect(result.count).toBe(expectedResult.count);
       expect(result.valid).toBe(expectedResult.valid);
+    });
+  }
+);
+
+describe.each([
+  [TextInputWidth.FluidFull,"govuk-!-width-full"],
+  [TextInputWidth.FluidThreeQuarters,"govuk-!-width-three-quarters"],
+  [TextInputWidth.FluidTwoThirds, "govuk-!-width-two-thirds"],
+  [TextInputWidth.FluidHalf, "govuk-!-width-one-half"],
+  [TextInputWidth.FluidThird, "govuk-!-width-one-third"],
+  [TextInputWidth.FluidQuarter, "govuk-!-width-one-quarter"],
+  [TextInputWidth.Char20, "govuk-input--width-20"],
+  [TextInputWidth.Char10, "govuk-input--width-10"],
+  [TextInputWidth.Char5, "govuk-input--width-5"],
+  [TextInputWidth.Char4, "govuk-input--width-4"],
+  [TextInputWidth.Char3, "govuk-input--width-3"],
+  [TextInputWidth.Char2, "govuk-input--width-2"]
+])(
+  'TextInputWidthClass must return correct class names for enum',
+  (value, expectedClassName) => {
+    it(`TextInputWidthClass must return ${expectedClassName} values for ${value}`, async () => {
+      const className = TextInputWidthClass.get(value);
+      expect(className).toBe(expectedClassName);
     });
   }
 );

@@ -1,5 +1,5 @@
 import React from 'react';
-import { TextInputProps } from './InputCommon';
+import { TextInputProps, TextInputWidthClass } from './InputCommon';
 
 export function TextInput({
   identifier,
@@ -25,7 +25,7 @@ export function TextInput({
 }: TextInputProps) {
   const containerAttr = {
     className:
-      error || inErrorState
+      error
         ? 'govuk-form-group govuk-form-group--error'
         : 'govuk-form-group',
   };
@@ -33,7 +33,7 @@ export function TextInput({
     required,
     'aria-required': required,
     type: inputType || 'text',
-    className: inputClassExt ? `govuk-input ${inputClassExt}` : 'govuk-input',
+    className: 'govuk-input',
     autoComplete,
     spellCheck,
     'aria-describedby': '',
@@ -43,7 +43,10 @@ export function TextInput({
     inputMode,
   };
   if (width) {
-    inputAttr.className += ` govuk-input--width-${width}`;
+    inputAttr.className += ` ${TextInputWidthClass.get(width)}`;
+  }
+  if (inputClassExt) {
+    inputAttr.className += ` ${inputClassExt}`;
   }
   if (error) {
     inputAttr['aria-describedby'] = `${identifier}-error `;
