@@ -198,7 +198,6 @@ describe('Text Counter renders correctly for all configurations', () => {
 
 describe('Text Counter functions correctly for all configurations', () => {
   it('input must correctly update character count', async () => {
-    window.document.getSelection = jest.fn();
     const mockOnChange = jest.fn();
     const mockOnBlur = jest.fn();
     render(
@@ -226,7 +225,6 @@ describe('Text Counter functions correctly for all configurations', () => {
   });
 
   it('input must correctly update word count', async () => {
-    window.document.getSelection = jest.fn();
     const mockOnChange = jest.fn();
     const mockOnBlur = jest.fn();
     render(
@@ -260,7 +258,6 @@ describe('Text Counter functions correctly for all configurations', () => {
   });
 
   it('input must correctly show word count with threshold for character configuration', async () => {
-    window.document.getSelection = jest.fn();
     const mockOnChange = jest.fn();
     const mockOnBlur = jest.fn();
     render(
@@ -295,7 +292,6 @@ describe('Text Counter functions correctly for all configurations', () => {
   });
 
   it('input must correctly show word count with threshold for word configuration', async () => {
-    window.document.getSelection = jest.fn();
     const mockOnChange = jest.fn();
     const mockOnBlur = jest.fn();
     render(

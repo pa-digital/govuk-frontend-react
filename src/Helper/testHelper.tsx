@@ -13,6 +13,8 @@ interface RenderProps {
   initialRoutes?: { [name: string]: string }[];
 }
 
+window.document.getSelection = jest.fn();
+
 const AppProvider = ({ children, initialRoutes }: RenderProps) => {
   return (
     <MemoryRouter initialEntries={initialRoutes ?? ['/']}>

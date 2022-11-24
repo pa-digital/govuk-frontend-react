@@ -456,7 +456,6 @@ describe('Input functions correctly', () => {
     expect(mockOnValueChange).toHaveBeenCalledTimes(0);
   });
   it('date input must be correctly updated when day value changed', async () => {
-    window.document.getSelection = jest.fn();
     const mockOnValueChange = jest.fn();
     render(
       <DateInput
@@ -480,7 +479,6 @@ describe('Input functions correctly', () => {
     });
   });
   it('date input must not be updated when day value blurred', async () => {
-    window.document.getSelection = jest.fn();
     const mockOnValueChange = jest.fn();
     render(
       <DateInput
@@ -498,7 +496,6 @@ describe('Input functions correctly', () => {
     expect(mockOnValueChange).toHaveBeenCalledTimes(0);
   });
   it('date input must be correctly updated when month value changed', async () => {
-    window.document.getSelection = jest.fn();
     const mockOnValueChange = jest.fn();
     render(
       <DateInput
@@ -519,7 +516,6 @@ describe('Input functions correctly', () => {
     });
   });
   it('date input must not be updated when month value blurred', async () => {
-    window.document.getSelection = jest.fn();
     const mockOnValueChange = jest.fn();
     render(
       <DateInput
@@ -537,7 +533,6 @@ describe('Input functions correctly', () => {
     expect(mockOnValueChange).toHaveBeenCalledTimes(0);
   });
   it('date input must be correctly updated when year value changed', async () => {
-    window.document.getSelection = jest.fn();
     const mockOnValueChange = jest.fn();
     render(
       <DateInput
@@ -558,7 +553,6 @@ describe('Input functions correctly', () => {
     });
   });
   it('date input must not be updated when year value blurred', async () => {
-    window.document.getSelection = jest.fn();
     const mockOnValueChange = jest.fn();
     render(
       <DateInput

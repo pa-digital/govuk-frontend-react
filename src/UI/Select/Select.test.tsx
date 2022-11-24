@@ -209,7 +209,6 @@ describe('All Selects render correctly', () => {
 
 describe('Changing selected value functions correctly', () => {
   it('default select updates value correctly', async () => {
-    window.document.getSelection = jest.fn();
     const initData: SelectDataProps[] = [];
     SelectData.forEach((data) => {
       initData.push({
@@ -279,7 +278,6 @@ describe('Changing selected value functions correctly', () => {
   });
 
   it('pre-populated select updates value correctly', async () => {
-    window.document.getSelection = jest.fn();
     const initData: SelectDataProps[] = [];
     SelectData.forEach((data) => {
       initData.push({
@@ -352,7 +350,6 @@ describe('Changing selected value functions correctly', () => {
   it('select onBlur must fire correctly', async () => {
     const mockOnChange = jest.fn();
     const mockOnBlur = jest.fn();
-    window.document.getSelection = jest.fn();
     const initData: SelectDataProps[] = [];
     SelectData.forEach((data) => {
       initData.push({

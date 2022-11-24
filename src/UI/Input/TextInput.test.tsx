@@ -575,8 +575,7 @@ describe('Input functions correctly', () => {
     expect(input).toHaveValue('this is the value');
   });
   it('input onChange must fire correctly', async () => {
-    window.document.getSelection = jest.fn();
-    const mockOnChange = jest.fn();
+      const mockOnChange = jest.fn();
     const mockOnBlur = jest.fn();
     render(
       <TextInput
@@ -595,7 +594,6 @@ describe('Input functions correctly', () => {
     expect(mockOnChange).toHaveBeenCalledTimes(2);
   });
   it('input onBlur must fire correctly', async () => {
-    window.document.getSelection = jest.fn();
     const mockOnChange = jest.fn();
     const mockOnBlur = jest.fn();
     render(
