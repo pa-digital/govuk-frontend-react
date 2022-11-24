@@ -26,9 +26,24 @@ yarn build # generates the distributable package
 yarn pack # creates an npm package
 ```
 
-After installing the npm package you will need to reference the style
+After installing the npm package you will need to reference the style and font files
 
 ```bash
+/*! Copyright (c) 2011 by Margaret Calvert & Henrik Kubel. All rights reserved. The font has been customised for exclusive use on gov.uk. This cut is not commercially available. */
+@font-face{
+	font-family:"GDS Transport";
+	font-style:normal;
+	font-weight:normal;
+	src:url("/node_modules/@pa-digital/govuk-frontend-react/dist/assets/fonts/light-94a07e06a1-v2.woff2") format("woff2"), url("/node_modules/@pa-digital/govuk-frontend-react/dist/assets/fonts/light-f591b13f7d-v2.woff") format("woff");
+	font-display:fallback
+}
+@font-face{
+	font-family:"GDS Transport";
+	font-style:normal;
+	font-weight:bold;
+	src:url("/node_modules/@pa-digital/govuk-frontend-react/dist/assets/fonts/bold-b542beb274-v2.woff2") format("woff2"),url("/node_modules/@pa-digital/govuk-frontend-react/dist/assets/fonts/bold-affa96571d-v2.woff") format("woff");
+	font-display:fallback
+}
 @import "node_modules/@pa-digital/govuk-frontend-react/dist/govuk-frontend-react.css";
 ```
 

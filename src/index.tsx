@@ -73,3 +73,4 @@ export { Tabs, TabProps, TabContent } from './UI/Tabs/Tabs';
 export { Tag, TagProps } from './UI/Tag/tag';
 export { Content, ContentProps } from './UI/Typography/Content';
 export { Header, HeaderProps } from './UI/Typography/Header';
+export { Warning, WarningProps } from './UI/Warning/Warning';

@@ -1,11 +1,11 @@
 {
-  "version": "1.0.3",
+  "version": "1.0.5",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
   "license": "MIT",
   "files": [
     "dist",
-    "src"
+    "src/assets"
   ],
   "engines": {
     "node": ">=10"
@@ -92,6 +92,7 @@
     "eslint-plugin-storybook": "^0.6.7",
     "husky": "^8.0.1",
     "react": "^18.2.0",
+    "rollup-plugin-copy": "^3.4.0",
     "sass": "^1.54.9",
     "size-limit": "^8.0.1",
     "tsdx": "^0.14.1",

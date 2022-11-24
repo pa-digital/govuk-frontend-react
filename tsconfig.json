@@ -1,7 +1,7 @@
 {
   // see https://www.typescriptlang.org/tsconfig to better understand tsconfigs
-  "include": ["src", "types", "assets"],
-  "exclude": ["src/stories"],
+  "include": ["src", "types", "assets", "src/setupTests.ts", "tests/useWindowResize.test.tsx", "src/Helper/testHelper.tsx", "tests/Content.test.tsx", "tests/table.test.tsx", "tests/Select.test.tsx", "tests/Panel.test.tsx", "tests/NavLink.test.tsx", "tests/Inset.test.tsx", "tests/TextInput.test.tsx", "tests/TextArea.test.tsx", "tests/InputCommon.test.tsx", "tests/ErrorSummary.test.tsx", "tests/Details.test.tsx", "tests/DateInput.test.tsx", "tests/CheckboxList.test.tsx", "tests/Checkbox.test.tsx", "tests/Button.test.tsx", "tests/Breadcrumbs.test.tsx", "tests/BackLink.test.tsx", "tests/Accordion.test.tsx", "stories"],
+  "exclude": ["stories"],
   "types": ["node", "jest"],
   "compilerOptions": {
     "module": "esnext",
