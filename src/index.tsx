@@ -59,6 +59,11 @@ export {
 export { Select, SelectProps, SelectDataProps } from './UI/Select/Select';
 export { SkipLink } from './UI/SkipLink/SkipLink';
 export {
+  SummaryCard,
+  SummaryCardProps,
+  CardAction,
+} from './UI/SummaryCard/SummaryCard';
+export {
   SummaryList,
   SummaryListProps,
   SummaryListItemProps,

@@ -9,7 +9,7 @@ import { SummaryList, SummaryListItemProps } from '../src/UI/SummaryList/Summary
 
 expect.extend(toHaveNoViolations);
 
-export const SummaryData: SummaryListItemProps[] = [
+const SummaryData: SummaryListItemProps[] = [
   {
     key: 'Name',
     value: 'Sarah Philips',
@@ -33,7 +33,7 @@ export const SummaryData: SummaryListItemProps[] = [
   },
 ];
 
-describe('Summary List compcomponent is accessible', () => {
+describe('Summary List component is accessible', () => {
   it('must not fail any accessibility tests with empty list', async () => {
     const { container } = render(<SummaryList list={[]} />);
     const results = await axe(container);
