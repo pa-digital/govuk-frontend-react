@@ -5,7 +5,10 @@ import {
   axe,
   toHaveNoViolations,
 } from '../src/Helper/testHelper';
-import { SummaryList, SummaryListItemProps } from '../src/UI/SummaryList/SummaryList';
+import {
+  SummaryList,
+  SummaryListItemProps,
+} from '../src/UI/SummaryList/SummaryList';
 
 expect.extend(toHaveNoViolations);
 

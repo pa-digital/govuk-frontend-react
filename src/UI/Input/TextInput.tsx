@@ -24,10 +24,9 @@ export function TextInput({
   onBlur,
 }: TextInputProps) {
   const containerAttr = {
-    className:
-      error
-        ? 'govuk-form-group govuk-form-group--error'
-        : 'govuk-form-group',
+    className: error
+      ? 'govuk-form-group govuk-form-group--error'
+      : 'govuk-form-group',
   };
   const inputAttr = {
     required,

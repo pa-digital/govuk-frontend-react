@@ -1,7 +1,10 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { MemoryRouter as Router } from 'react-router-dom';
-import { BreadcrumbLink, Breadcrumbs } from '../../src/UI/Breadcrumbs/Breadcrumbs';
+import {
+  BreadcrumbLink,
+  Breadcrumbs,
+} from '../../src/UI/Breadcrumbs/Breadcrumbs';
 
 export default {
   title: 'Components/Navigation/Breadcrumbs',

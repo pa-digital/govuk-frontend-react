@@ -1,7 +1,7 @@
 module.exports = {
   env: {
     browser: true,
-    'jest/globals': true
+    'jest/globals': true,
   },
   parser: '@typescript-eslint/parser',
   // Specifies the ESLint parser
@@ -11,27 +11,32 @@ module.exports = {
     sourceType: 'module',
     // Allows for the use of imports
     ecmaFeatures: {
-      jsx: true // Allows for the parsing of JSX
-
-    }
+      jsx: true, // Allows for the parsing of JSX
+    },
   },
   settings: {
     react: {
-      version: 'detect' // Tells eslint-plugin-react to automatically detect the version of React to use
-
+      version: 'detect', // Tells eslint-plugin-react to automatically detect the version of React to use
     },
     'import/extensions': ['.js', '.jsx', '.ts', '.tsx'],
     'import/parsers': {
-      '@typescript-eslint/parser': ['.ts', '.tsx']
+      '@typescript-eslint/parser': ['.ts', '.tsx'],
     },
     'import/resolver': {
       node: {
-        extensions: ['.js', '.jsx', '.ts', '.tsx']
-      }
-    }
+        extensions: ['.js', '.jsx', '.ts', '.tsx'],
+      },
+    },
   },
   plugins: ['jest'],
-  extends: ['plugin:react/recommended', 'plugin:@typescript-eslint/recommended', 'airbnb', 'plugin:import/typescript', 'plugin:prettier/recommended', 'plugin:storybook/recommended'],
+  extends: [
+    'plugin:react/recommended',
+    'plugin:@typescript-eslint/recommended',
+    'airbnb',
+    'plugin:import/typescript',
+    'plugin:prettier/recommended',
+    'plugin:storybook/recommended',
+  ],
   rules: {
     // Place to specify ESLint rules. Can be used to overwrite rules specified from the extended configs
     '@typescript-eslint/no-empty-function': 'off',
@@ -46,12 +51,16 @@ module.exports = {
     'no-unused-vars': 'off',
     '@typescript-eslint/no-unused-vars': ['warn'],
     'react/jsx-filename-extension': 'off',
-    'import/extensions': ['error', 'ignorePackages', {
-      js: 'never',
-      jsx: 'never',
-      ts: 'never',
-      tsx: 'never'
-    }],
+    'import/extensions': [
+      'error',
+      'ignorePackages',
+      {
+        js: 'never',
+        jsx: 'never',
+        ts: 'never',
+        tsx: 'never',
+      },
+    ],
     'jest/no-disabled-tests': 'warn',
     'jest/no-focused-tests': 'error',
     'jest/no-identical-title': 'error',
@@ -65,6 +74,6 @@ module.exports = {
     // suppress prop spreading as we are using it correctly
     'react/jsx-props-no-spreading': 'off',
     // Allow control of exporting positions
-    'import/prefer-default-export': 'off'
-  }
+    'import/prefer-default-export': 'off',
+  },
 };

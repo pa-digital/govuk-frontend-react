@@ -1,3 +1,4 @@
+import { clone } from '../../Helper/helperFunctions';
 import { CheckBoxDataProps } from './CheckboxList';
 
 export const mapCheckBoxListToArray = (data: CheckBoxDataProps[]): string[] => {
@@ -10,4 +11,15 @@ export const mapCheckBoxListToArray = (data: CheckBoxDataProps[]): string[] => {
     });
   }
   return retVal;
+};
+
+export const setAllCheckBoxValues = (
+  data: CheckBoxDataProps[],
+  checked: boolean
+): CheckBoxDataProps[] => {
+  const iteratorCheckBoxes = clone<CheckBoxDataProps[]>(data);
+  iteratorCheckBoxes.forEach((checkBox) => {
+    checkBox.checked = checked;
+  });
+  return iteratorCheckBoxes;
 };

@@ -1,6 +1,10 @@
 import './core.scss';
 
-export { Accordion, AccordionProps, AccordionElement} from './UI/Accordion/Accordion';
+export {
+  Accordion,
+  AccordionProps,
+  AccordionElement,
+} from './UI/Accordion/Accordion';
 export { BackLink, BackLinkProps } from './UI/BackLink/BackLink';
 export {
   Breadcrumbs,

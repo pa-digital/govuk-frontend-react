@@ -53,14 +53,12 @@ export function DateInput({
     'aria-describedby': `${identifier}-legend`,
   };
   if (hint) {
-    fieldSetAttr[
-      'aria-describedby'
-    ] = `${identifier}-hint ${fieldSetAttr['aria-describedby']}`;
+    fieldSetAttr['aria-describedby'] =
+      `${identifier}-hint ${fieldSetAttr['aria-describedby']}`;
   }
   if (error) {
-    fieldSetAttr[
-      'aria-describedby'
-    ] = `${identifier}-error ${fieldSetAttr['aria-describedby']}`;
+    fieldSetAttr['aria-describedby'] =
+      `${identifier}-error ${fieldSetAttr['aria-describedby']}`;
   }
 
   const calcInputErrorStates = (input: string): boolean => {

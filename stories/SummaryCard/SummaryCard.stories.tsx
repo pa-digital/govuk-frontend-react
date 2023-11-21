@@ -1,10 +1,8 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { MemoryRouter as Router } from 'react-router-dom';
-import {
-  SummaryListItemProps,
-} from '../../src/UI/SummaryList/SummaryList';
-import {SummaryCard, CardAction} from '../../src/UI/SummaryCard/SummaryCard';
+import { SummaryListItemProps } from '../../src/UI/SummaryList/SummaryList';
+import { SummaryCard, CardAction } from '../../src/UI/SummaryCard/SummaryCard';
 import { action } from '@storybook/addon-actions';
 
 export default {
@@ -37,17 +35,17 @@ const SummaryData: SummaryListItemProps[] = [
 ];
 
 const ActionsData: CardAction[] = [
-    {
-        text: "Record Payment",
-        extendedText: "from this tenant",
-        action: "payment"
-    },
-    {
-        text: "Evict Tenant",
-        extendedText: "from this property",
-        action: "evict"
-    }
-]
+  {
+    text: 'Record Payment',
+    extendedText: 'from this tenant',
+    action: 'payment',
+  },
+  {
+    text: 'Evict Tenant',
+    extendedText: 'from this property',
+    action: 'evict',
+  },
+];
 
 // eslint-disable-next-line react/function-component-definition
 const Template: ComponentStory<typeof SummaryCard> = (args) => (
@@ -58,11 +56,13 @@ const Template: ComponentStory<typeof SummaryCard> = (args) => (
 
 export const Default = Template.bind({});
 Default.args = {
-  title: "Lead tenant", summaryList: SummaryData
+  title: 'Lead tenant',
+  summaryList: SummaryData,
 };
-
 
 export const Actions = Template.bind({});
 Actions.args = {
-    title: "Update tenants", summaryList: SummaryData, cardActions: ActionsData
+  title: 'Update tenants',
+  summaryList: SummaryData,
+  cardActions: ActionsData,
 };

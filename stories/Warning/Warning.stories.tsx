@@ -16,5 +16,5 @@ const Template: ComponentStory<typeof Warning> = (args) => (
 
 export const Default = Template.bind({});
 Default.args = {
-    children: "You can be fined up to £5,000 if you do not register."
+  children: 'You can be fined up to £5,000 if you do not register.',
 };

@@ -1,14 +1,17 @@
-import React, { memo, useEffect, useMemo, useState } from 'react';
+import React, { memo, useEffect, useState } from 'react';
 
 import { v4 as uuidv4 } from 'uuid';
 import CheckBox from './Checkbox';
 import { CheckBoxDivider } from './CheckboxDivider';
+import { setAllCheckBoxValues } from './CheckBoxListCommon';
+import { clone } from '../../Helper/helperFunctions';
 
 export interface CheckBoxDataProps {
   text: string;
   value: string;
   hint?: string;
   divider?: boolean;
+  exclusive?: boolean;
   checked?: boolean;
 }
 
@@ -20,6 +23,7 @@ export interface CheckBoxListProps {
   error?: string;
   compact?: boolean;
   multiQuestion?: boolean;
+  showToggle?: boolean;
   onValueChange?: (values: CheckBoxDataProps[]) => void;
 }
 
@@ -32,11 +36,13 @@ export const CheckBoxList = memo(
     error,
     compact,
     multiQuestion,
+    showToggle,
     onValueChange,
   }: CheckBoxListProps) => {
     const [checkBoxList, setCheckBoxList] = useState<CheckBoxDataProps[]>(data);
     const [renderToggle, setRenderToggle] = useState(false);
-    useMemo(() => {}, []);
+    const [toggleText, setToggleText] = useState('Select all');
+    const [allSelected, setAllSelected] = useState(false);
 
     const containerAttr = {
       className: error
@@ -61,15 +67,54 @@ export const CheckBoxList = memo(
 
     const handleOnChange = (e: any) => {
       if (onValueChange) {
-        const updatedList = checkBoxList;
+        let updatedList = clone<CheckBoxDataProps[]>(checkBoxList);
         const valuesIndex = checkBoxList.findIndex(
           (x) => x.value === e.target.value
         );
         if (valuesIndex > -1) {
+          const selectedCheckBox = updatedList[valuesIndex];
+          if (selectedCheckBox.exclusive && e.target.checked) {
+            updatedList = setAllCheckBoxValues(updatedList, false);
+          }
+          if (!selectedCheckBox.exclusive) {
+            const exclusiveIndex = updatedList.findIndex((x) => x.exclusive);
+            if (exclusiveIndex > 0) {
+              updatedList = updatedList.map((item) => ({
+                ...item,
+                checked: item.exclusive ? false : item.checked,
+              }));
+            }
+          }
+
           updatedList[valuesIndex].checked = e.target.checked;
         }
-        onValueChange(updatedList);
+        if (showToggle) {
+          if (updatedList.every((item) => item.checked)) {
+            setAllSelected(true);
+            setToggleText('De-Select all');
+          }
+          if (!e.target.checked) {
+            setAllSelected(false);
+            setToggleText('Select all');
+          }
+        }
         setCheckBoxList(updatedList);
+        onValueChange(updatedList);
+      }
+    };
+
+    const handleToggleChange = () => {
+      setToggleText(allSelected ? 'Select all' : 'De-Select all');
+      setAllSelected(!allSelected);
+
+      if (onValueChange) {
+        let iteratorCheckBoxes = clone<CheckBoxDataProps[]>(checkBoxList);
+        iteratorCheckBoxes = setAllCheckBoxValues(
+          iteratorCheckBoxes,
+          !allSelected
+        );
+        setCheckBoxList(iteratorCheckBoxes);
+        onValueChange(iteratorCheckBoxes);
       }
     };
 
@@ -109,6 +154,20 @@ export const CheckBoxList = memo(
           )}
 
           <div data-module="govuk-checkboxes" {...checkBoxesWrapperAttr}>
+            {showToggle && (
+              <>
+                <CheckBox
+                  identifier={`${identifier}-toggle`}
+                  groupName={identifier}
+                  text={toggleText}
+                  value={'All selected'}
+                  key={uuidv4()}
+                  checked={allSelected}
+                  onCheckChanged={handleToggleChange}
+                />
+                <CheckBoxDivider text="or" key={uuidv4()} />
+              </>
+            )}
             {checkBoxList.map((element, index) => {
               return element.divider ? (
                 <CheckBoxDivider text={element.text} key={uuidv4()} />

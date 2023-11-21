@@ -575,7 +575,7 @@ describe('Input functions correctly', () => {
     expect(input).toHaveValue('this is the value');
   });
   it('input onChange must fire correctly', async () => {
-      const mockOnChange = jest.fn();
+    const mockOnChange = jest.fn();
     const mockOnBlur = jest.fn();
     render(
       <TextInput

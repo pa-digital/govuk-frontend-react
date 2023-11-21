@@ -23,18 +23,44 @@ import { Meta } from '@storybook/addon-docs';
 <p>The Checkbox list can be configured using the following:</p>
 
 <ul>
-  <li>Label - contains the element label</li>
-  <li>Pre Checked - allows checkboxes to be pre-checked</li>
-  <li>Compact - reduces the overall size of the checkboxes</li>
   <li>
-    MultiQuestion - adjusts the label to not contain an H1 tag to be compliant
+    Identifier - main identifier for the checkboxlist - builds all subsequent
+    element id's
+  </li>
+  <li>Header - contains the checkbox list header</li>
+  <li>Data - the array of CheckBoxDataProps that contains the checkboxes</li>
+  <li>
+    Hint (Optional) - contains a hint for the overall checkox and each item
+  </li>
+  <li>Compact (Optional) - reduces the overall size of the checkboxes</li>
+  <li>
+    MultiQuestion (Optional) - adjusts the label to not contain an H1 tag to be
+    compliant
   </li>
   <li>
-    Divider - provides a divider in the checkbox list - defaults to "or" but can
-    be overridden
+    ShowToggle (Optional) - displays a toggle option that can select/de-select
+    all boxes
   </li>
-  <li>Hints - contains hints for the overall checkox and each item</li>
-  <li>Error - displays the error and configures all aria attributes</li>
+  <li>
+    Error (Optional) - displays the error and configures all aria attributes
+  </li>
+  <li>
+    <b>onValueChange</b> - returns an array of CheckBoxDataProps
+  </li>
+</ul>
+
+<p>For each checkbox within the data element</p>
+
+<ul>
+  <li>Value - the value assigned with the checkbox</li>
+  <li>Text - the text displayed in the checkbox label</li>
+  <li>Checked (Optional) - Determines if the checkbox is checked intitially</li>
+  <li>Hint (Optional) - Displays a hint for the checkbox</li>
+  <li>Divider (Optional) - Makes the element display as a divider</li>
+  <li>
+    Exclusive (Optional) - Makes the checkbox exclusive and will un-check all
+    others when selected
+  </li>
 </ul>
 
 <h2>Helper Functions</h2>

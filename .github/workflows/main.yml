@@ -6,9 +6,9 @@ name: CI
 on:
   # Triggers the workflow on push or pull request events but only for the "main" branch
   push:
-    branches: [ "main" ]
+    branches: ['main']
   pull_request:
-    branches: [ "main" ]
+    branches: ['main']
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -28,19 +28,17 @@ jobs:
       # Installs Yarn
       - name: Yarn Install
         run: yarn install
-        
+
       # Runs Test
       - name: Yarn Execute tests with coverage
         run: yarn cover
-        
+
       # Runs Build
       - name: Yarn Execute build and creates tsdx files
         run: yarn build
-        
+
       # Runs Deploy Storybook
       - name: Yarn Deploy Storybook
         run: yarn deploy-storybook -- --ci
         env:
           GH_TOKEN: ${{ secrets.PACKAGE_TOKEN }}
-
-    

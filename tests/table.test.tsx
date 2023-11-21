@@ -5,7 +5,11 @@ import {
   axe,
   toHaveNoViolations,
 } from '../src/Helper/testHelper';
-import { Table, TableCellDataProps, TableRowDataProps } from '../src/UI/Table/table';
+import {
+  Table,
+  TableCellDataProps,
+  TableRowDataProps,
+} from '../src/UI/Table/table';
 
 export const TableHeaderData: TableCellDataProps[] = [
   {

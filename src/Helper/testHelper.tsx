@@ -15,13 +15,13 @@ interface RenderProps {
 
 window.document.getSelection = jest.fn();
 
-const AppProvider = ({ children, initialRoutes }: RenderProps) => {
+function AppProvider({ children, initialRoutes }: RenderProps) {
   return (
     <MemoryRouter initialEntries={initialRoutes ?? ['/']}>
       {children}
     </MemoryRouter>
   );
-};
+}
 
 const customRender = (
   ui: ReactElement,

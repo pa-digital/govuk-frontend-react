@@ -22,7 +22,7 @@ describe('Warning renders correctly', () => {
     const warningIcon = screen.getByText('!');
     expect(warningIcon).toBeInTheDocument();
     expect(warningIcon).toHaveClass('govuk-warning-text__icon');
-    expect(warningIcon).toHaveAttribute("aria-hidden","true");
+    expect(warningIcon).toHaveAttribute('aria-hidden', 'true');
     const warningAssistive = screen.getByText('Warning');
     expect(warningAssistive).toBeInTheDocument();
     expect(warningAssistive).toHaveClass('govuk-warning-text__assistive');

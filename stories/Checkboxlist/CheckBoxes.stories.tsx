@@ -45,6 +45,31 @@ const DividerCheckBoxData: CheckBoxDataProps[] = [
   },
 ];
 
+const ExclusiveCheckBoxData: CheckBoxDataProps[] = [
+  {
+    text: 'France',
+    value: 'France',
+  },
+  {
+    text: 'Portugal',
+    value: 'Portugal',
+  },
+  {
+    text: 'Spain',
+    value: 'Spain',
+  },
+  {
+    text: 'or',
+    value: '',
+    divider: true,
+  },
+  {
+    text: 'No, I will not be travelling to any of these countries',
+    value: 'none',
+    exclusive: true,
+  },
+];
+
 const HintCheckBoxData: CheckBoxDataProps[] = [
   {
     text: 'British',
@@ -121,6 +146,22 @@ PreChecked.args = {
   identifier: 'checkboxlist',
   header: 'Checkbox list with pre checked options',
   data: PresetCheckBoxData,
+};
+
+export const ExclusiveCheckBoxes = Template.bind({});
+ExclusiveCheckBoxes.args = {
+  identifier: 'checkboxlist',
+  header: 'Checkbox list with exclusive options',
+  hint: 'Select all countries that apply',
+  data: ExclusiveCheckBoxData,
+};
+
+export const ToggleCheckBoxes = Template.bind({});
+ToggleCheckBoxes.args = {
+  identifier: 'checkboxlist',
+  header: 'Checkbox list with toggle options',
+  data: DefaultCheckBoxData,
+  showToggle: true,
 };
 
 export const Error = Template.bind({});

@@ -28,7 +28,9 @@ const navLinks: NavigationLink[] = [
 // eslint-disable-next-line react/function-component-definition
 const Template: ComponentStory<typeof DetachedNavigation> = (args) => (
   <Router>
-    <div className="govuk-header__container govuk-width-container"><DetachedNavigation {...args} /></div>    
+    <div className="govuk-header__container govuk-width-container">
+      <DetachedNavigation {...args} />
+    </div>
   </Router>
 );
 
