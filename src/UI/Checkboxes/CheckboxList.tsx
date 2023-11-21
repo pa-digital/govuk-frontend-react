@@ -1,5 +1,4 @@
 import React, { memo, useEffect, useState } from 'react';
-
 import { v4 as uuidv4 } from 'uuid';
 import CheckBox from './Checkbox';
 import { CheckBoxDivider } from './CheckboxDivider';
@@ -24,7 +23,7 @@ export interface CheckBoxListProps {
   compact?: boolean;
   multiQuestion?: boolean;
   showToggle?: boolean;
-  onValueChange?: (values: CheckBoxDataProps[]) => void;
+  onValueChange: (values: CheckBoxDataProps[]) => void;
 }
 
 export const CheckBoxList = memo(
@@ -66,56 +65,52 @@ export const CheckBoxList = memo(
     fieldSetAttr['aria-describedby'] += `${identifier}-legend`;
 
     const handleOnChange = (e: any) => {
-      if (onValueChange) {
-        let updatedList = clone<CheckBoxDataProps[]>(checkBoxList);
-        const valuesIndex = checkBoxList.findIndex(
-          (x) => x.value === e.target.value
-        );
-        if (valuesIndex > -1) {
-          const selectedCheckBox = updatedList[valuesIndex];
-          if (selectedCheckBox.exclusive && e.target.checked) {
-            updatedList = setAllCheckBoxValues(updatedList, false);
+      let updatedList = clone<CheckBoxDataProps[]>(checkBoxList);
+      const valuesIndex = checkBoxList.findIndex(
+        (x) => x.value === e.target.value
+      );
+      if (valuesIndex > -1) {
+        const selectedCheckBox = updatedList[valuesIndex];
+        if (selectedCheckBox.exclusive && e.target.checked) {
+          updatedList = setAllCheckBoxValues(updatedList, false);
+        }
+        if (!selectedCheckBox.exclusive) {
+          const exclusiveIndex = updatedList.findIndex((x) => x.exclusive);
+          if (exclusiveIndex > 0) {
+            updatedList = updatedList.map((item) => ({
+              ...item,
+              checked: item.exclusive ? false : item.checked,
+            }));
           }
-          if (!selectedCheckBox.exclusive) {
-            const exclusiveIndex = updatedList.findIndex((x) => x.exclusive);
-            if (exclusiveIndex > 0) {
-              updatedList = updatedList.map((item) => ({
-                ...item,
-                checked: item.exclusive ? false : item.checked,
-              }));
-            }
-          }
+        }
 
-          updatedList[valuesIndex].checked = e.target.checked;
-        }
-        if (showToggle) {
-          if (updatedList.every((item) => item.checked)) {
-            setAllSelected(true);
-            setToggleText('De-Select all');
-          }
-          if (!e.target.checked) {
-            setAllSelected(false);
-            setToggleText('Select all');
-          }
-        }
-        setCheckBoxList(updatedList);
-        onValueChange(updatedList);
+        updatedList[valuesIndex].checked = e.target.checked;
       }
+      if (showToggle) {
+        if (updatedList.every((item) => item.checked)) {
+          setAllSelected(true);
+          setToggleText('De-Select all');
+        }
+        if (!e.target.checked) {
+          setAllSelected(false);
+          setToggleText('Select all');
+        }
+      }
+      setCheckBoxList(updatedList);
+      onValueChange(updatedList);
     };
 
     const handleToggleChange = () => {
       setToggleText(allSelected ? 'Select all' : 'De-Select all');
       setAllSelected(!allSelected);
 
-      if (onValueChange) {
-        let iteratorCheckBoxes = clone<CheckBoxDataProps[]>(checkBoxList);
-        iteratorCheckBoxes = setAllCheckBoxValues(
-          iteratorCheckBoxes,
-          !allSelected
-        );
-        setCheckBoxList(iteratorCheckBoxes);
-        onValueChange(iteratorCheckBoxes);
-      }
+      let iteratorCheckBoxes = clone<CheckBoxDataProps[]>(checkBoxList);
+      iteratorCheckBoxes = setAllCheckBoxValues(
+        iteratorCheckBoxes,
+        !allSelected
+      );
+      setCheckBoxList(iteratorCheckBoxes);
+      onValueChange(iteratorCheckBoxes);
     };
 
     useEffect(() => {
