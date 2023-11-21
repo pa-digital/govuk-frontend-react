@@ -66,28 +66,33 @@ export const DataCheckCheckBoxData: CheckBoxDataProps[] = [
 
 describe('Checkbox list component is accessible', () => {
   it('default checkbox must not fail any accessibility tests', async () => {
+    const mockOnValueChange = jest.fn();
     const { container } = render(
       <CheckBoxList
         identifier="nations"
         header="Will you be travelling to any of these countries?"
         data={clone<CheckBoxDataProps[]>(CheckBoxData)}
+        onValueChange={mockOnValueChange}
       />
     );
     const results = await axe(container);
     expect(results).toHaveNoViolations();
   });
   it('divider checkbox must not fail any accessibility tests', async () => {
+    const mockOnValueChange = jest.fn();
     const { container } = render(
       <CheckBoxList
         identifier="nations"
         header="Will you be travelling to any of these countries?"
         data={clone<CheckBoxDataProps[]>(DividerCheckBoxData)}
+        onValueChange={mockOnValueChange}
       />
     );
     const results = await axe(container);
     expect(results).toHaveNoViolations();
   });
   it('initial checked values must not fail any accessibility tests', async () => {
+    const mockOnValueChange = jest.fn();
     const initData = clone<CheckBoxDataProps[]>(CheckBoxData);
     initData[0].checked = true;
     initData[1].checked = true;
@@ -96,18 +101,21 @@ describe('Checkbox list component is accessible', () => {
         identifier="nations"
         header="Will you be travelling to any of these countries?"
         data={initData}
+        onValueChange={mockOnValueChange}
       />
     );
     const results = await axe(container);
     expect(results).toHaveNoViolations();
   });
   it('hint state must not fail any accessibility tests', async () => {
+    const mockOnValueChange = jest.fn();
     const { container } = render(
       <CheckBoxList
         identifier="nations"
         header="Will you be travelling to any of these countries?"
         data={clone<CheckBoxDataProps[]>(CheckBoxData)}
         hint="This is a hint"
+        onValueChange={mockOnValueChange}
       />
     );
     const results = await axe(container);
@@ -115,12 +123,14 @@ describe('Checkbox list component is accessible', () => {
   });
 
   it('multi question state must not fail any accessibility tests', async () => {
+    const mockOnValueChange = jest.fn();
     const { container } = render(
       <CheckBoxList
         identifier="nations"
         header="Will you be travelling to any of these countries?"
         data={clone<CheckBoxDataProps[]>(CheckBoxData)}
         multiQuestion
+        onValueChange={mockOnValueChange}
       />
     );
     const results = await axe(container);
@@ -128,36 +138,42 @@ describe('Checkbox list component is accessible', () => {
   });
 
   it('compact state must not fail any accessibility tests', async () => {
+    const mockOnValueChange = jest.fn();
     const { container } = render(
       <CheckBoxList
         identifier="nations"
         header="Will you be travelling to any of these countries?"
         data={clone<CheckBoxDataProps[]>(CheckBoxData)}
         compact
+        onValueChange={mockOnValueChange}
       />
     );
     const results = await axe(container);
     expect(results).toHaveNoViolations();
   });
   it('show all toggle must not fail any accessibility tests', async () => {
+    const mockOnValueChange = jest.fn();
     const { container } = render(
       <CheckBoxList
         identifier="nations"
         header="Will you be travelling to any of these countries?"
         data={clone<CheckBoxDataProps[]>(CheckBoxData)}
         showToggle={true}
+        onValueChange={mockOnValueChange}
       />
     );
     const results = await axe(container);
     expect(results).toHaveNoViolations();
   });
   it('error state must not fail any accessibility tests', async () => {
+    const mockOnValueChange = jest.fn();
     const { container } = render(
       <CheckBoxList
         identifier="nations"
         header="Will you be travelling to any of these countries?"
         data={clone<CheckBoxDataProps[]>(CheckBoxData)}
         error="You must select a value"
+        onValueChange={mockOnValueChange}
       />
     );
     const results = await axe(container);
@@ -167,11 +183,13 @@ describe('Checkbox list component is accessible', () => {
 
 describe('Checkbox list renders correctly', () => {
   it('default checkboxlist renders correctly', async () => {
+    const mockOnValueChange = jest.fn();
     render(
       <CheckBoxList
         identifier="nations"
         header="Will you be travelling to any of these countries?"
         data={clone<CheckBoxDataProps[]>(CheckBoxData)}
+        onValueChange={mockOnValueChange}
       />
     );
     const checkBoxHeader = screen.getByText(
@@ -222,11 +240,13 @@ describe('Checkbox list renders correctly', () => {
   });
 
   it('divider checkboxlist renders correctly', async () => {
+    const mockOnValueChange = jest.fn();
     render(
       <CheckBoxList
         identifier="nations"
         header="Will you be travelling to any of these countries?"
         data={clone<CheckBoxDataProps[]>(DividerCheckBoxData)}
+        onValueChange={mockOnValueChange}
       />
     );
     const checkBoxHeader = screen.getByText(
@@ -280,12 +300,14 @@ describe('Checkbox list renders correctly', () => {
   });
 
   it('multiQuestion checkboxlist renders correctly', async () => {
+    const mockOnValueChange = jest.fn();
     render(
       <CheckBoxList
         identifier="nations"
         header="Will you be travelling to any of these countries?"
         data={clone<CheckBoxDataProps[]>(DividerCheckBoxData)}
         multiQuestion
+        onValueChange={mockOnValueChange}
       />
     );
 
@@ -297,12 +319,14 @@ describe('Checkbox list renders correctly', () => {
   });
 
   it('checkboxlist renders correctly with a hint', async () => {
+    const mockOnValueChange = jest.fn();
     render(
       <CheckBoxList
         identifier="nations"
         header="Will you be travelling to any of these countries?"
         data={clone<CheckBoxDataProps[]>(CheckBoxData)}
         hint="This is a hint"
+        onValueChange={mockOnValueChange}
       />
     );
     const checkBoxHeader = screen.getByText(
@@ -321,6 +345,7 @@ describe('Checkbox list renders correctly', () => {
   });
 
   it('checkboxlist renders correctly with a checked element', async () => {
+    const mockOnValueChange = jest.fn();
     const initData = clone<CheckBoxDataProps[]>(CheckBoxData);
     initData[0].checked = true;
     render(
@@ -328,6 +353,7 @@ describe('Checkbox list renders correctly', () => {
         identifier="nations"
         header="Will you be travelling to any of these countries?"
         data={initData}
+        onValueChange={mockOnValueChange}
       />
     );
     const checkBoxes = screen.getAllByRole('checkbox');
@@ -341,11 +367,13 @@ describe('Checkbox list renders correctly', () => {
   });
 
   it('compact checkboxlist renders correctly', async () => {
+    const mockOnValueChange = jest.fn();
     render(
       <CheckBoxList
         identifier="nations"
         header="Will you be travelling to any of these countries?"
         data={clone<CheckBoxDataProps[]>(DividerCheckBoxData)}
+        onValueChange={mockOnValueChange}
       />
     );
     const checkBoxHeader = screen.getByText(
@@ -359,12 +387,14 @@ describe('Checkbox list renders correctly', () => {
   });
 
   it('toggle checkboxlist renders correctly', async () => {
+    const mockOnValueChange = jest.fn();
     render(
       <CheckBoxList
         identifier="nations"
         header="Will you be travelling to any of these countries?"
         data={clone<CheckBoxDataProps[]>(CheckBoxData)}
         showToggle={true}
+        onValueChange={mockOnValueChange}
       />
     );
     const checkBoxHeader = screen.getByText(
@@ -424,12 +454,14 @@ describe('Checkbox list renders correctly', () => {
   });
 
   it('checkboxlist renders correctly with an error', async () => {
+    const mockOnValueChange = jest.fn();
     render(
       <CheckBoxList
         identifier="nations"
         header="Will you be travelling to any of these countries?"
         data={clone<CheckBoxDataProps[]>(CheckBoxData)}
         error="You must select at least one country"
+        onValueChange={mockOnValueChange}
       />
     );
     const checkBoxHeader = screen.getByText(
