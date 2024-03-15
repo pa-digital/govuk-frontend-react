@@ -21,5 +21,5 @@ jobs:
       - id: build-publish
         uses: bitovi/github-actions-storybook-to-github-pages@v1.0.0
         with:
-          path: /storybook-static
+          path: /home/runner/work/govuk-frontend-react/govuk-frontend-react/storybook-static
           build_command: npm run build-storybook
