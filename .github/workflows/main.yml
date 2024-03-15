@@ -36,3 +36,13 @@ jobs:
       # Runs Build
       - name: Yarn Execute build and creates tsdx files
         run: yarn build
+
+      # Runs Build Storybook
+      - name: Yarn Execute build storybook static files
+        run: yarn build-storybook
+
+      # Runs Deploy Storybook
+      - name: Yarn Deploy Storybook
+        run: yarn deploy-storybook -- --ci
+        env:
+          GH_TOKEN: ${{ secrets.PACKAGE_TOKEN }}
