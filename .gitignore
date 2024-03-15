@@ -8,9 +8,6 @@
 /build
 /dist
 
-#storybook
-/storybook-static
-
 #misc
 *.log
 .DS_Store
