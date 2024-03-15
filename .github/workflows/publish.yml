@@ -20,7 +20,7 @@ jobs:
           node-version: '20.x'
           registry-url: 'https://npm.pkg.github.com'
           scope: '@pa-digital'
-      - run: npm ci
+      - run: npm
       - run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.PACKAGE_TOKEN }}
