@@ -3,7 +3,7 @@ name: Build and Publish storybook to GitHub Pages
 on:
   push:
     branches:
-      - "main"
+      - 'main'
 jobs:
   deploy:
     environment:
@@ -11,8 +11,8 @@ jobs:
       url: ${{ steps.build-publish.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
-    - id: build-publish
-      uses: bitovi/github-actions-storybook-to-github-pages@v1.0.0
-      with:
-        path: /dist
-        build_command: npm run build-storybook
+      - id: build-publish
+        uses: bitovi/github-actions-storybook-to-github-pages@v1.0.0
+        with:
+          path: /dist
+          build_command: npm run build-storybook
