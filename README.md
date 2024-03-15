@@ -9,21 +9,21 @@ You can find the guide at the <a href="https://design-system.service.gov.uk/" ta
 If you just with to check functionality using the Storybook functionality
 
 ```bash
-yarn install # installs all necessary modules
-yarn build # generates the distributable package
-yarn storybook # starts the storybook instance
+npm install # installs all necessary modules
+npm run build # generates the distributable package
+npm run storybook # starts the storybook instance
 ```
 
-You can view the storybook <a href="https://pa-digital.github.io/govuk-frontend-react/?path=/story/introduction--page" target="_blank" rel="noopener">here</a>
+You can view the storybook <a href="https://pa-digital.github.io/govuk-frontend-react" target="_blank" rel="noopener">here</a>
 
 ## Local NPM use
 
 If you just with to use the package as is direct from the repository then simply run the commands below in a single terminal window
 
 ```bash
-yarn install # installs all necessary modules
-yarn build # generates the distributable package
-yarn pack # creates an npm package
+npm install # installs all necessary modules
+npm run build # generates the distributable package
+npm pack # creates an npm package
 ```
 
 After installing the npm package you will need to reference the style and font files
@@ -63,18 +63,18 @@ After making any changes to the library, all changes and new components must hav
 There are two commands for testing
 
 ```bash
-yarn test # to test the entire library
-yarn test "testfile.test.tsx" # to test an individual file
+npm run test # to test the entire library
+npm run test "testfile.test.tsx" # to test an individual file
 ```
 
 ```bash
-yarn cover # to run test coverage for the entire library
-yarn cover "testfile.test.tsx" # to run test coverage for an individual file
+npm run cover # to run test coverage for the entire library
+npm run cover "testfile.test.tsx" # to run test coverage for an individual file
 ```
 
 Once all code is covered and tests are passing you can now build and package the project
 
 ```bash
-yarn build # generates the distributable package
-yarn pack # creates an npm package
+npm run build # generates the distributable package
+npm run pack # creates an npm package
 ```
