@@ -26,14 +26,13 @@ jobs:
       - uses: actions/checkout@v3
 
       # Installs Yarn
-      - name: Yarn Install
-        run: yarn install
+      - name: NPM Install
+        run: npm install
 
       # Runs Test
-      - name: Yarn Execute tests with coverage
-        run: yarn cover
+      - name: NPM Execute tests with coverage
+        run: npm run cover
 
       # Runs Build
-      - name: Yarn Execute build and creates tsdx files
-        run: yarn build
-
+      - name: NPM Execute build and creates tsdx files
+        run: npm run build
