@@ -26,7 +26,9 @@ export function TextCounter({
   onBlur,
 }: TextCounterProps) {
   const [displayCounter, setDisplayCounter] = useState(false);
-  const [counterMessage, setCounterMessage] = useState<CounterResult>();
+  const [counterMessage, setCounterMessage] = useState<CounterResult>(
+    buildCounterText('', maxCount, counterType)
+  );
 
   const handleOnChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
     e.preventDefault();
@@ -60,7 +62,7 @@ export function TextCounter({
   }, []);
 
   const infoAttr = {
-    className: counterMessage?.valid
+    className: counterMessage.valid
       ? 'govuk-hint govuk-character-count__message'
       : 'govuk-character-count__message govuk-character-count__status govuk-error-message',
   };
@@ -91,7 +93,7 @@ export function TextCounter({
 
       {displayCounter && (
         <div id={`${identifier}-info`} {...infoAttr}>
-          {counterMessage?.message}
+          {counterMessage.message}
         </div>
       )}
     </div>

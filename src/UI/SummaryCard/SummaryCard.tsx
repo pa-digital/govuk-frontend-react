@@ -1,19 +1,7 @@
 import React from 'react';
 import { v4 as uuidv4 } from 'uuid';
-import { SummaryList, SummaryListItemProps } from '../SummaryList/SummaryList';
-
-export interface CardAction {
-  text: string;
-  extendedText: string;
-  action: string;
-}
-
-export interface SummaryCardProps {
-  title: string;
-  summaryList: SummaryListItemProps[];
-  cardActions?: CardAction[];
-  handleCardAction?: (action: string) => void;
-}
+import { SummaryList } from '../SummaryList/SummaryList';
+import { SummaryCardProps } from './SummaryCardProps';
 
 export function SummaryCard({
   title,

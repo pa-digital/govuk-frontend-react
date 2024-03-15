@@ -44,7 +44,16 @@ After installing the npm package you will need to reference the style and font f
 	src:url("/node_modules/@pa-digital/govuk-frontend-react/dist/assets/fonts/bold-b542beb274-v2.woff2") format("woff2"),url("/node_modules/@pa-digital/govuk-frontend-react/dist/assets/fonts/bold-affa96571d-v2.woff") format("woff");
 	font-display:fallback
 }
-@import "node_modules/@pa-digital/govuk-frontend-react/dist/govuk-frontend-react.css";
+@import "node_modules/@pa-digital/govuk-frontend-react/dist/assets/govuk-frontend-react.css";
+```
+
+## Pre-Requisites
+
+In your projects index.html file in the public folder, you need to add the following class tags
+
+```bash
+<head class="govuk-template">
+<body class="govuk-template__body js-enabled govuk-frontend-supported">
 ```
 
 ## Alterations to the project

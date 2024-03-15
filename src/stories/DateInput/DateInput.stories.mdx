@@ -1,0 +1,53 @@
+import { Meta } from '@storybook/addon-docs';
+
+<Meta title="Components/Date Input/Information" />
+
+<h2>Date Input</h2>
+
+<p>
+  Use the date input component to help users enter a memorable date or one they
+  can easily look up.
+</p>
+
+<p>
+  You can view the full implementation details on the Date input section of the
+  GDS website.
+</p>
+
+<a
+  href="https://design-system.service.gov.uk/components/date-input/"
+  target="_blank"
+  rel="noreferrer"
+>
+  Learn more >>{' '}
+</a>
+
+<h2>Options</h2>
+
+<p>The Date input can be configured using the following:</p>
+
+<ul>
+  <li>
+    MultiQuestion - adjusts the label to not contain an H1 tag to be compliant
+  </li>
+  <li>Hint - displays a hint to assist the user</li>
+  <li>Error - displays the error and configures all aria attributes</li>
+</ul>
+
+<h2>Errors</h2>
+
+<p>
+  When passing an error, the specifics of the error are passed to enable the
+  correct styling and error attributes for individual elements.
+</p>
+<p>The errorType enum options are:</p>
+
+<ul>
+  <li>all - all elements</li>
+  <li>day - only day element</li>
+  <li>month - only month element</li>
+  <li>year - only year element</li>
+  <li>dayMonth - both day and month element</li>
+  <li>monthYear - both month and year element</li>
+  <li>dayYear - both day and year element</li>
+</ul>

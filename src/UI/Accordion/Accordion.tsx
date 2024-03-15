@@ -132,104 +132,104 @@ export function Accordion({ id, expanded, elements }: AccordionProps) {
       id={`accordion-${id}`}
     >
       <div className="govuk-accordion__controls">
-        <>
-          <button
-            type="button"
-            className="govuk-accordion__show-all"
-            {...controlButtonExpandedAttr}
-            onClick={(e) => toggleAllClick(e)}
-            onKeyDown={(e) => toggleAllKeyPress(e)}
-          >
-            <span {...controlButtonIconAttr} />
-            <span className="govuk-accordion__show-all-text">
-              {toggleButtonText}
-            </span>
-          </button>
-          {accordionElements &&
-            accordionElements.map((element, index) => {
-              const elementWrapper = element.expanded
-                ? 'govuk-accordion__section govuk-accordion__section--expanded'
-                : 'govuk-accordion__section';
-              const elementButtonAttr = {
-                'aria-controls': `accordion-${id}-content-${index + 1}`,
-                className: 'govuk-accordion__section-button',
-                'aria-expanded': element.expanded,
-                'aria-label': element.expanded
-                  ? `${element.title}, Hide this section`
-                  : `${element.title}, Show this section`,
-              };
-              const elementChevronAttr = {
-                className: element.expanded
-                  ? 'govuk-accordion-nav__chevron'
-                  : 'govuk-accordion-nav__chevron govuk-accordion-nav__chevron--down',
-              };
-              return (
-                <div className={elementWrapper} key={`${id}-${index}`}>
-                  <div className="govuk-accordion__section-header">
-                    <h2 className="govuk-accordion__section-heading">
-                      <button
-                        type="button"
-                        {...elementButtonAttr}
-                        onClick={(e) =>
-                          toggleElementClick(e, index, element.expanded)
-                        }
-                        onKeyDown={(e) =>
-                          toggleElementKeyPress(e, index, element.expanded)
-                        }
-                      >
-                        <span
-                          className="govuk-accordion__section-heading-text"
-                          id={`accordion-${id}-heading-${index + 1}`}
-                        >
-                          <span className="govuk-accordion__section-heading-text-focus">
-                            {element.title}
-                          </span>
-                        </span>
-                        <span className="govuk-visually-hidden govuk-accordion__section-heading-divider">
-                          ,{' '}
-                        </span>
-
-                        {element.summary && (
-                          <>
-                            <span
-                              className="govuk-accordion__section-summary govuk-body"
-                              id={`accordion-${id}-summary-${index + 1}`}
-                            >
-                              <span className="govuk-accordion__section-summary-focus">
-                                {element.summary}
-                              </span>
-                            </span>
-                            <span className="govuk-visually-hidden govuk-accordion__section-heading-divider">
-                              ,{' '}
-                            </span>
-                          </>
-                        )}
-                        <span
-                          className="govuk-accordion__section-toggle"
-                          data-nosnippet=""
-                        >
-                          <span className="govuk-accordion__section-toggle-focus">
-                            <span {...elementChevronAttr} />
-                            <span className="govuk-accordion__section-toggle-text">
-                              {element.expanded ? 'Hide' : 'Show'}
-                            </span>
-                          </span>
-                        </span>
-                      </button>
-                    </h2>
-                  </div>
-                  <div
-                    id={`accordion-${id}-content-${index + 1}`}
-                    className="govuk-accordion__section-content"
-                    aria-labelledby={`accordion-${id}-heading-${index + 1}`}
-                  >
-                    {element.content}
-                  </div>
-                </div>
-              );
-            })}
-        </>
+        <button
+          type="button"
+          className="govuk-accordion__show-all"
+          {...controlButtonExpandedAttr}
+          onClick={(e) => toggleAllClick(e)}
+          onKeyDown={(e) => toggleAllKeyPress(e)}
+        >
+          <span {...controlButtonIconAttr} />
+          <span className="govuk-accordion__show-all-text">
+            {toggleButtonText}
+          </span>
+        </button>
       </div>
+      <>
+        {accordionElements &&
+          accordionElements.map((element, index) => {
+            const elementWrapper = element.expanded
+              ? 'govuk-accordion__section govuk-accordion__section--expanded'
+              : 'govuk-accordion__section';
+            const elementButtonAttr = {
+              'aria-controls': `accordion-${id}-content-${index + 1}`,
+              className: 'govuk-accordion__section-button',
+              'aria-expanded': element.expanded,
+              'aria-label': element.expanded
+                ? `${element.title}, Hide this section`
+                : `${element.title}, Show this section`,
+            };
+            const elementChevronAttr = {
+              className: element.expanded
+                ? 'govuk-accordion-nav__chevron'
+                : 'govuk-accordion-nav__chevron govuk-accordion-nav__chevron--down',
+            };
+            return (
+              <div className={elementWrapper} key={`${id}-${index}`}>
+                <div className="govuk-accordion__section-header">
+                  <h2 className="govuk-accordion__section-heading">
+                    <button
+                      type="button"
+                      {...elementButtonAttr}
+                      onClick={(e) =>
+                        toggleElementClick(e, index, element.expanded)
+                      }
+                      onKeyDown={(e) =>
+                        toggleElementKeyPress(e, index, element.expanded)
+                      }
+                    >
+                      <span
+                        className="govuk-accordion__section-heading-text"
+                        id={`accordion-${id}-heading-${index + 1}`}
+                      >
+                        <span className="govuk-accordion__section-heading-text-focus">
+                          {element.title}
+                        </span>
+                      </span>
+                      <span className="govuk-visually-hidden govuk-accordion__section-heading-divider">
+                        ,{' '}
+                      </span>
+
+                      {element.summary && (
+                        <>
+                          <span
+                            className="govuk-accordion__section-summary govuk-body"
+                            id={`accordion-${id}-summary-${index + 1}`}
+                          >
+                            <span className="govuk-accordion__section-summary-focus">
+                              {element.summary}
+                            </span>
+                          </span>
+                          <span className="govuk-visually-hidden govuk-accordion__section-heading-divider">
+                            ,{' '}
+                          </span>
+                        </>
+                      )}
+                      <span
+                        className="govuk-accordion__section-toggle"
+                        data-nosnippet=""
+                      >
+                        <span className="govuk-accordion__section-toggle-focus">
+                          <span {...elementChevronAttr} />
+                          <span className="govuk-accordion__section-toggle-text">
+                            {element.expanded ? 'Hide' : 'Show'}
+                          </span>
+                        </span>
+                      </span>
+                    </button>
+                  </h2>
+                </div>
+                <div
+                  id={`accordion-${id}-content-${index + 1}`}
+                  className="govuk-accordion__section-content"
+                  aria-labelledby={`accordion-${id}-heading-${index + 1}`}
+                >
+                  {element.content}
+                </div>
+              </div>
+            );
+          })}
+      </>
     </div>
   );
 }

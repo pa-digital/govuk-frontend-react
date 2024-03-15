@@ -29,14 +29,7 @@ module.exports = {
     },
   },
   plugins: ['jest'],
-  extends: [
-    'plugin:react/recommended',
-    'plugin:@typescript-eslint/recommended',
-    'airbnb',
-    'plugin:import/typescript',
-    'plugin:prettier/recommended',
-    'plugin:storybook/recommended',
-  ],
+  extends: ['plugin:react/recommended', 'plugin:@typescript-eslint/recommended', 'airbnb', 'plugin:import/typescript', 'plugin:prettier/recommended', 'plugin:storybook/recommended', 'plugin:storybook/recommended'],
   rules: {
     // Place to specify ESLint rules. Can be used to overwrite rules specified from the extended configs
     '@typescript-eslint/no-empty-function': 'off',

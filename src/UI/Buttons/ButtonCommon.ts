@@ -1,7 +1,7 @@
 import { MouseEvent, KeyboardEvent } from 'react';
 
 export interface CoreButtonProps {
-  variant?: 'primary' | 'secondary' | 'warning';
+  variant?: 'primary' | 'secondary' | 'warning' | 'inverse';
   disabled?: boolean;
   onClick?: (event: MouseEvent<HTMLElement>) => void;
   onKeyDown?: (event: KeyboardEvent<HTMLElement>) => void;
@@ -14,6 +14,8 @@ export const GetVariantClass = (variant: string | undefined): string => {
       return ' govuk-button--secondary';
     case 'warning':
       return ' govuk-button--warning';
+    case 'inverse':
+      return ' govuk-button--inverse';
     default:
       return '';
   }

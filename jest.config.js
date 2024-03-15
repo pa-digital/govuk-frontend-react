@@ -9,4 +9,5 @@ module.exports = {
     '!src/Helper/testHelper.tsx',
     '!src/stories/*.{tsx, mdx}',
   ],
+  setupFilesAfterEnv: ['<rootDir>/src/setupTests.ts'],
 };

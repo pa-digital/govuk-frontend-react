@@ -10,7 +10,7 @@ export function Warning({ children }: WarningProps) {
         !
       </span>
       <strong className="govuk-warning-text__text">
-        <span className="govuk-warning-text__assistive">Warning</span>
+        <span className="govuk-visually-hidden">Warning</span>
         {children}
       </strong>
     </div>
