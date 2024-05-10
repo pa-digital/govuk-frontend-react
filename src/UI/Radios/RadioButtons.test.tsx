@@ -5,6 +5,7 @@ import {
   axe,
   toHaveNoViolations,
   fireEvent,
+  userEvent,
 } from '../../Helper/testHelper';
 import { RadioButtons } from './RadioButtons';
 import {
@@ -338,7 +339,7 @@ describe('Radio Buttons functions correctly', () => {
     expect(radios[0]).not.toBeChecked();
     expect(radios[1]).not.toBeChecked();
 
-    fireEvent.click(radios[0]);
+    await userEvent.click(radios[0]);
 
     expect(radios[0]).toBeChecked();
     expect(radios[1]).not.toBeChecked();

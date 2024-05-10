@@ -1,9 +1,9 @@
 import React from 'react';
-import { act } from 'react-dom/test-utils';
 import {
   render,
   screen,
   axe,
+  act,
   toHaveNoViolations,
   fireEvent,
 } from '../../Helper/testHelper';

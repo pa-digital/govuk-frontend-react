@@ -5,6 +5,7 @@ import {
   axe,
   toHaveNoViolations,
   fireEvent,
+  userEvent,
 } from '../../Helper/testHelper';
 import RadioButton from './RadioButton';
 
@@ -165,7 +166,7 @@ describe('Radio Button functions correctly', () => {
     expect(radio).toBeInTheDocument();
     expect(radio).not.toBeChecked();
 
-    fireEvent.click(radio);
+    await userEvent.click(radio);
 
     expect(radio).toBeChecked();
     expect(mockOnChange).toHaveBeenCalledTimes(1);

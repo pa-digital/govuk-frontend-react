@@ -114,13 +114,11 @@ describe('Date Input renders correctly', () => {
     expect(dayInputLabel).toHaveAttribute('for', 'dob-day');
     expect(dayInputLabel).toHaveClass('govuk-label govuk-date-input__label');
 
-    const dayInputWrapper = dayInput.parentNode as HTMLElement;
-    const dayInputGroupElement = dayInputWrapper.parentNode as HTMLElement;
+    const dayInputWrapper = dayInput.parentNode as HTMLDivElement;
+    expect(dayInputWrapper).toHaveClass('govuk-form-group');
+    const dayInputGroupElement = dayInputWrapper.parentNode as HTMLDivElement;
     expect(dayInputGroupElement).toBeInTheDocument();
-    expect(dayInputGroupElement).toHaveClass('govuk-form-group');
-    const dayInputItemElement = dayInputGroupElement.parentNode as HTMLElement;
-    expect(dayInputItemElement).toBeInTheDocument();
-    expect(dayInputItemElement).toHaveClass('govuk-date-input__item');
+    expect(dayInputGroupElement).toHaveClass('govuk-date-input__item');
 
     expect(monthInput).toBeInTheDocument();
     expect(monthInput).toHaveAttribute('id', 'dob-month');
@@ -134,14 +132,12 @@ describe('Date Input renders correctly', () => {
     expect(monthInputLabel).toHaveAttribute('for', 'dob-month');
     expect(monthInputLabel).toHaveClass('govuk-label govuk-date-input__label');
 
-    const monthInputWrapper = monthInput.parentNode as HTMLElement;
-    const monthInputGroupElement = monthInputWrapper.parentNode as HTMLElement;
+    const monthInputWrapper = monthInput.parentNode as HTMLDivElement;
+    expect(monthInputWrapper).toHaveClass('govuk-form-group');
+    const monthInputGroupElement =
+      monthInputWrapper.parentNode as HTMLDivElement;
     expect(monthInputGroupElement).toBeInTheDocument();
-    expect(monthInputGroupElement).toHaveClass('govuk-form-group');
-    const monthInputItemElement =
-      monthInputGroupElement.parentNode as HTMLElement;
-    expect(monthInputItemElement).toBeInTheDocument();
-    expect(monthInputItemElement).toHaveClass('govuk-date-input__item');
+    expect(monthInputGroupElement).toHaveClass('govuk-date-input__item');
 
     expect(yearInput).toBeInTheDocument();
     expect(yearInput).toHaveAttribute('id', 'dob-year');
@@ -156,19 +152,17 @@ describe('Date Input renders correctly', () => {
     expect(yearInputLabel).toHaveAttribute('for', 'dob-year');
     expect(yearInputLabel).toHaveClass('govuk-label govuk-date-input__label');
 
-    const yearInputWrapper = yearInput.parentNode as HTMLElement;
-    const yearInputGroupElement = yearInputWrapper.parentNode as HTMLElement;
+    const yearInputWrapper = yearInput.parentNode as HTMLDivElement;
+    expect(yearInputWrapper).toHaveClass('govuk-form-group');
+    const yearInputGroupElement = yearInputWrapper.parentNode as HTMLDivElement;
     expect(yearInputGroupElement).toBeInTheDocument();
-    expect(yearInputGroupElement).toHaveClass('govuk-form-group');
-    const yearInputItemElement =
-      yearInputGroupElement.parentNode as HTMLElement;
-    expect(yearInputItemElement).toBeInTheDocument();
-    expect(yearInputItemElement).toHaveClass('govuk-date-input__item');
+    expect(yearInputGroupElement).toHaveClass('govuk-date-input__item');
 
-    const dateInputsContainer = dayInputItemElement.parentNode as HTMLElement;
-    expect(dateInputsContainer).toBeInTheDocument();
-    expect(dateInputsContainer).toHaveAttribute('id', 'dob');
-    expect(dateInputsContainer).toHaveClass('govuk-date-input');
+    const yearInputContainer =
+      yearInputGroupElement.parentNode as HTMLDivElement;
+    expect(yearInputContainer).toBeInTheDocument();
+    expect(yearInputContainer).toHaveClass('govuk-date-input');
+    expect(yearInputContainer).toHaveAttribute('id', 'dob');
   });
 
   it('Date Input must legend configured correctly for standard mode', async () => {

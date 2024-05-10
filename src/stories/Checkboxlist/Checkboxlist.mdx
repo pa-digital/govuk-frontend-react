@@ -1,4 +1,4 @@
-import { Meta } from '@storybook/addon-docs';
+import { Meta } from '@storybook/blocks';
 
 <Meta title="Components/Checkboxes/Information" />
 
@@ -11,11 +11,7 @@ import { Meta } from '@storybook/addon-docs';
   GDS website.
 </p>
 
-<a
-  href="https://design-system.service.gov.uk/components/checkboxes/"
-  target="_blank"
-  rel="noreferrer"
->
+<a href="https://design-system.service.gov.uk/components/checkboxes/" target="_blank" rel="noreferrer">
   Learn more >>
 </a>
 
@@ -28,23 +24,30 @@ import { Meta } from '@storybook/addon-docs';
     Identifier - main identifier for the checkboxlist - builds all subsequent
     element id's
   </li>
+
   <li>Header - contains the checkbox list header</li>
   <li>Data - the array of CheckBoxDataProps that contains the checkboxes</li>
+
   <li>
     Hint (Optional) - contains a hint for the overall checkox and each item
   </li>
+
   <li>Compact (Optional) - reduces the overall size of the checkboxes</li>
+
   <li>
     MultiQuestion (Optional) - adjusts the label to not contain an H1 tag to be
     compliant
   </li>
+
   <li>
     ShowToggle (Optional) - displays a toggle option that can select/de-select
     all boxes
   </li>
+
   <li>
     Error (Optional) - displays the error and configures all aria attributes
   </li>
+
   <li>
     <b>onValueChange</b> - returns an array of CheckBoxDataProps
   </li>
@@ -58,6 +61,7 @@ import { Meta } from '@storybook/addon-docs';
   <li>Checked (Optional) - Determines if the checkbox is checked intitially</li>
   <li>Hint (Optional) - Displays a hint for the checkbox</li>
   <li>Divider (Optional) - Makes the element display as a divider</li>
+
   <li>
     Exclusive (Optional) - Makes the checkbox exclusive and will un-check all
     others when selected
@@ -73,4 +77,4 @@ import { Meta } from '@storybook/addon-docs';
   list to an array of string containing the values for all checked checkboxes
 </p>
 
-<pre>mapCheckBoxListToArray(data: CheckBoxDataProps[]): string[]</pre>
+<pre>mapCheckBoxListToArray(data: CheckBoxDataProps\[]): string\[]</pre>

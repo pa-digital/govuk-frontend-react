@@ -1,5 +1,10 @@
 import React from 'react';
-import { render, axe, toHaveNoViolations } from '../../Helper/testHelper';
+import {
+  render,
+  axe,
+  screen,
+  toHaveNoViolations,
+} from '../../Helper/testHelper';
 import { Button } from './Button';
 import { ButtonGroup } from './ButtonGroup';
 
@@ -29,5 +34,23 @@ describe('Button Group component is accessible', () => {
     );
     const results = await axe(container);
     expect(results).toHaveNoViolations();
+  });
+});
+
+describe('Button Group renders correctly', () => {
+  it('must render the wrapper correctly', async () => {
+    render(
+      <ButtonGroup>
+        <>
+          <Button>button 1</Button>
+          <Button variant="secondary">button 2</Button>
+        </>
+      </ButtonGroup>
+    );
+    const buttons = await screen.findAllByRole('button');
+    expect(buttons.length).toBe(2);
+    const buttonGroupWrapper = buttons[0].parentNode as HTMLDivElement;
+    expect(buttonGroupWrapper).toBeInTheDocument();
+    expect(buttonGroupWrapper).toHaveClass('govuk-button-group');
   });
 });

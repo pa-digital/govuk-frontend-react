@@ -5,6 +5,7 @@ import {
   axe,
   toHaveNoViolations,
   fireEvent,
+  userEvent,
 } from '../../Helper/testHelper';
 import { Navigation } from './Navigation';
 import { NavigationLink } from './NavigationProps';
@@ -234,10 +235,10 @@ describe('Navigation component renders correctly below desktop', () => {
     const navButton = screen.getByText('Menu');
     expect(navButton).toBeInTheDocument();
 
-    fireEvent.click(navButton);
+    await userEvent.click(navButton);
     expect(navButton).toHaveAttribute('aria-expanded', 'true');
 
-    fireEvent.click(navButton);
+    await userEvent.click(navButton);
     expect(navButton).toHaveAttribute('aria-expanded', 'false');
   });
   it('navigation hidden attribute must toggle correctly when menu is toggled', async () => {
@@ -250,11 +251,11 @@ describe('Navigation component renders correctly below desktop', () => {
     expect(navList).toBeInTheDocument();
     expect(navList).not.toBeVisible();
 
-    fireEvent.click(navButton);
+    await userEvent.click(navButton);
     expect(navButton).toHaveAttribute('aria-expanded', 'true');
     expect(navList).toBeVisible();
 
-    fireEvent.click(navButton);
+    await userEvent.click(navButton);
     expect(navButton).toHaveAttribute('aria-expanded', 'false');
     expect(navList).not.toBeVisible();
   });
