@@ -7,17 +7,17 @@ import {
   userEvent,
   fireEvent,
 } from '../../Helper/testHelper';
+import { PasswordInput } from './PasswordInput';
 import { TextInputWidth } from './InputCommon';
-import { TextInput } from './TextInput';
 
 expect.extend(toHaveNoViolations);
 
-describe('Input component is accessible', () => {
+describe('Password Input component is accessible', () => {
   it('must not fail any accessibility tests with minimal configuration', async () => {
     const mockOnChange = jest.fn();
     const mockOnBlur = jest.fn();
     const { container } = render(
-      <TextInput
+      <PasswordInput
         identifier="input"
         label="label"
         onChange={mockOnChange}
@@ -31,7 +31,7 @@ describe('Input component is accessible', () => {
     const mockOnChange = jest.fn();
     const mockOnBlur = jest.fn();
     const { container } = render(
-      <TextInput
+      <PasswordInput
         identifier="input"
         label="label"
         error="Error message"
@@ -46,17 +46,14 @@ describe('Input component is accessible', () => {
     const mockOnChange = jest.fn();
     const mockOnBlur = jest.fn();
     const { container } = render(
-      <TextInput
+      <PasswordInput
         identifier="input"
         label="label"
         hint="hint"
         multiQuestion
         required
-        inputType="password"
         labelClassExt="labelExtClass"
         inputClassExt="labelExtClass"
-        autoComplete="given-name"
-        spellCheck
         onChange={mockOnChange}
         onBlur={mockOnBlur}
       />
@@ -68,17 +65,14 @@ describe('Input component is accessible', () => {
     const mockOnChange = jest.fn();
     const mockOnBlur = jest.fn();
     const { container } = render(
-      <TextInput
+      <PasswordInput
         identifier="input"
         label="label"
         hint="hint"
         multiQuestion
         required
-        inputType="password"
         labelClassExt="labelExtClass"
         inputClassExt="labelExtClass"
-        autoComplete="given-name"
-        spellCheck
         value="this is a value"
         onChange={mockOnChange}
         onBlur={mockOnBlur}
@@ -91,19 +85,16 @@ describe('Input component is accessible', () => {
     const mockOnChange = jest.fn();
     const mockOnBlur = jest.fn();
     const { container } = render(
-      <TextInput
+      <PasswordInput
         identifier="input"
         label="label"
         hint="hint"
         multiQuestion
         required
-        inputType="password"
         labelClassExt="labelExtClass"
         inputClassExt="labelExtClass"
-        autoComplete="given-name"
         error="Error message"
         inErrorState
-        spellCheck
         value="this is a value"
         onChange={mockOnChange}
         onBlur={mockOnBlur}
@@ -116,17 +107,14 @@ describe('Input component is accessible', () => {
     const mockOnChange = jest.fn();
     const mockOnBlur = jest.fn();
     const { container } = render(
-      <TextInput
+      <PasswordInput
         identifier="input"
         label="label"
         hint="hint"
         multiQuestion
         required
-        inputType="password"
         labelClassExt="labelExtClass"
         inputClassExt="labelExtClass"
-        autoComplete="given-name"
-        spellCheck
         value="this is a value"
         disabled
         onChange={mockOnChange}
@@ -138,12 +126,12 @@ describe('Input component is accessible', () => {
   });
 });
 
-describe('Input renders correctly', () => {
+describe('Password Input renders correctly', () => {
   it('input must have all structural elements rendered correctly', async () => {
     const mockOnChange = jest.fn();
     const mockOnBlur = jest.fn();
     render(
-      <TextInput
+      <PasswordInput
         label="label text"
         identifier="inputName"
         onChange={mockOnChange}
@@ -151,60 +139,23 @@ describe('Input renders correctly', () => {
       />
     );
     const input = await screen.findByLabelText('label text');
-    const container = input.parentNode as HTMLDivElement;
-    expect(container).toBeInTheDocument();
-    expect(container).toHaveClass('govuk-form-group');
-  });
-
-  it('input must have all structural elements rendered correctly for prefix not in error', async () => {
-    const mockOnChange = jest.fn();
-    const mockOnBlur = jest.fn();
-    render(
-      <TextInput
-        label="label text"
-        identifier="inputName"
-        prefix="£"
-        onChange={mockOnChange}
-        onBlur={mockOnBlur}
-      />
+    const wrapper = input.parentNode as HTMLDivElement;
+    expect(wrapper).toBeInTheDocument();
+    expect(wrapper).toHaveClass(
+      'govuk-input__wrapper govuk-password-input__wrapper'
     );
-    const input = await screen.findByLabelText('label text');
-    const prefixWrapper = input.parentNode as HTMLDivElement;
-    expect(prefixWrapper).toBeInTheDocument();
-    expect(prefixWrapper).toHaveClass('govuk-input__wrapper');
 
-    const container = prefixWrapper.parentNode as HTMLDivElement;
+    const container = wrapper.parentNode as HTMLDivElement;
     expect(container).toBeInTheDocument();
-    expect(container).toHaveClass('govuk-form-group');
-  });
-
-  it('input must have all structural elements rendered correctly for suffix not in error', async () => {
-    const mockOnChange = jest.fn();
-    const mockOnBlur = jest.fn();
-    render(
-      <TextInput
-        label="label text"
-        identifier="inputName"
-        suffix="kg"
-        onChange={mockOnChange}
-        onBlur={mockOnBlur}
-      />
-    );
-    const input = await screen.findByLabelText('label text');
-    const suffixWrapper = input.parentNode as HTMLDivElement;
-    expect(suffixWrapper).toBeInTheDocument();
-    expect(suffixWrapper).toHaveClass('govuk-input__wrapper');
-
-    const container = suffixWrapper.parentNode as HTMLDivElement;
-    expect(container).toBeInTheDocument();
-    expect(container).toHaveClass('govuk-form-group');
+    expect(container).toHaveClass('govuk-form-group govuk-password-input');
+    expect(container.getAttribute('data-module')).toBe('govuk-password-input');
   });
 
   it('input must have all structural elements rendered correctly in error', async () => {
     const mockOnChange = jest.fn();
     const mockOnBlur = jest.fn();
     render(
-      <TextInput
+      <PasswordInput
         label="label"
         identifier="inputName"
         error="this is the error"
@@ -213,74 +164,39 @@ describe('Input renders correctly', () => {
       />
     );
     const input = await screen.findByLabelText('label');
-    const container = input.parentNode as HTMLDivElement;
+    const wrapper = input.parentNode as HTMLDivElement;
+    expect(wrapper).toBeInTheDocument();
+    expect(wrapper).toHaveClass(
+      'govuk-input__wrapper govuk-password-input__wrapper'
+    );
+
+    const container = wrapper.parentNode as HTMLDivElement;
     expect(container).toBeInTheDocument();
-    expect(container).toHaveClass('govuk-form-group govuk-form-group--error');
+    expect(container).toHaveClass(
+      'govuk-form-group govuk-form-group--error govuk-password-input'
+    );
   });
 
-  it('input must have all structural elements rendered correctly for prefix in error', async () => {
+  it('password input must have all standard attributes configured correctly', async () => {
     const mockOnChange = jest.fn();
     const mockOnBlur = jest.fn();
     render(
-      <TextInput
+      <PasswordInput
         label="label text"
         identifier="inputName"
-        prefix="£"
-        error="error"
         onChange={mockOnChange}
         onBlur={mockOnBlur}
       />
     );
+
     const input = await screen.findByLabelText('label text');
-    const prefixWrapper = input.parentNode as HTMLDivElement;
-    expect(prefixWrapper).toBeInTheDocument();
-    expect(prefixWrapper).toHaveClass('govuk-input__wrapper');
-
-    const container = prefixWrapper.parentNode as HTMLDivElement;
-    expect(container).toBeInTheDocument();
-    expect(container).toHaveClass('govuk-form-group govuk-form-group--error');
-  });
-
-  it('input must have all structural elements rendered correctly for suffix in error', async () => {
-    const mockOnChange = jest.fn();
-    const mockOnBlur = jest.fn();
-    render(
-      <TextInput
-        label="label text"
-        identifier="inputName"
-        suffix="kg"
-        error="error"
-        onChange={mockOnChange}
-        onBlur={mockOnBlur}
-      />
-    );
-    const input = await screen.findByLabelText('label text');
-    const suffixWrapper = input.parentNode as HTMLDivElement;
-    expect(suffixWrapper).toBeInTheDocument();
-    expect(suffixWrapper).toHaveClass('govuk-input__wrapper');
-
-    const container = suffixWrapper.parentNode as HTMLDivElement;
-    expect(container).toBeInTheDocument();
-    expect(container).toHaveClass('govuk-form-group govuk-form-group--error');
-  });
-
-  it('input must have all standard attributes configured correctly', async () => {
-    const mockOnChange = jest.fn();
-    const mockOnBlur = jest.fn();
-    render(
-      <TextInput
-        label="label text"
-        identifier="inputName"
-        onChange={mockOnChange}
-        onBlur={mockOnBlur}
-      />
-    );
-    const input = await screen.findByRole('textbox');
     expect(input).toBeInTheDocument();
-    expect(input).toHaveClass('govuk-input');
+    expect(input).toHaveClass(
+      'govuk-input govuk-password-input__input govuk-js-password-input-input'
+    );
     expect(input).toHaveAttribute('id', 'inputName');
     expect(input).toHaveAttribute('name', 'inputName');
-    expect(input).toHaveAttribute('type', 'text');
+    expect(input).toHaveAttribute('type', 'password');
     expect(input).toHaveAttribute('aria-describedby', 'inputName-label');
     expect(input).toHaveAttribute('aria-invalid', 'false');
   });
@@ -289,7 +205,7 @@ describe('Input renders correctly', () => {
     const mockOnChange = jest.fn();
     const mockOnBlur = jest.fn();
     render(
-      <TextInput
+      <PasswordInput
         label="label text"
         identifier="inputName"
         width={TextInputWidth.FluidFull}
@@ -306,7 +222,7 @@ describe('Input renders correctly', () => {
     const mockOnChange = jest.fn();
     const mockOnBlur = jest.fn();
     render(
-      <TextInput
+      <PasswordInput
         label="label text"
         identifier="inputName"
         width={TextInputWidth.Char10}
@@ -319,61 +235,11 @@ describe('Input renders correctly', () => {
     expect(input).toHaveClass('govuk-input govuk-input--width-10');
   });
 
-  it('input must have type attribute set correctly for a password input', async () => {
-    const mockOnChange = jest.fn();
-    const mockOnBlur = jest.fn();
-    render(
-      <TextInput
-        label="label text"
-        identifier="inputName"
-        inputType="password"
-        onChange={mockOnChange}
-        onBlur={mockOnBlur}
-      />
-    );
-    const input = await screen.findByLabelText('label text');
-    expect(input).toBeInTheDocument();
-    expect(input).toHaveAttribute('type', 'password');
-  });
-
-  it('input must have type attribute set correctly for an email input', async () => {
-    const mockOnChange = jest.fn();
-    const mockOnBlur = jest.fn();
-    render(
-      <TextInput
-        label="label text"
-        identifier="inputName"
-        inputType="email"
-        onChange={mockOnChange}
-        onBlur={mockOnBlur}
-      />
-    );
-    const input = await screen.findByLabelText('label text');
-    expect(input).toBeInTheDocument();
-    expect(input).toHaveAttribute('type', 'email');
-  });
-
-  it('input must have input mode attribute set correctly for a numeric input', async () => {
-    const mockOnChange = jest.fn();
-    const mockOnBlur = jest.fn();
-    render(
-      <TextInput
-        label="label"
-        identifier="inputName"
-        inputMode="numeric"
-        onChange={mockOnChange}
-        onBlur={mockOnBlur}
-      />
-    );
-    const input = await screen.findByLabelText('label');
-    expect(input).toHaveAttribute('inputmode', 'numeric');
-  });
-
   it('input must have all required attributes configured correctly', async () => {
     const mockOnChange = jest.fn();
     const mockOnBlur = jest.fn();
     render(
-      <TextInput
+      <PasswordInput
         label="label text"
         identifier="inputName"
         required
@@ -381,51 +247,33 @@ describe('Input renders correctly', () => {
         onBlur={mockOnBlur}
       />
     );
-    const input = await screen.findByRole('textbox');
+    const input = await screen.findByLabelText('label text');
     expect(input).toBeInTheDocument();
     expect(input).toHaveAttribute('required');
     expect(input).toHaveAttribute('aria-required', 'true');
   });
 
-  it('input must have spellcheck configured correctly where enabled', async () => {
+  it('input must have auto complete configured correctly', async () => {
     const mockOnChange = jest.fn();
     const mockOnBlur = jest.fn();
     render(
-      <TextInput
+      <PasswordInput
         label="label text"
         identifier="inputName"
-        spellCheck
         onChange={mockOnChange}
         onBlur={mockOnBlur}
       />
     );
-    const input = await screen.findByRole('textbox');
+    const input = await screen.findByLabelText('label text');
     expect(input).toBeInTheDocument();
-    expect(input).toHaveAttribute('spellcheck', 'true');
-  });
-
-  it('input must have auto complete configured correctly where enabled', async () => {
-    const mockOnChange = jest.fn();
-    const mockOnBlur = jest.fn();
-    render(
-      <TextInput
-        label="label text"
-        identifier="inputName"
-        autoComplete="given-name"
-        onChange={mockOnChange}
-        onBlur={mockOnBlur}
-      />
-    );
-    const input = await screen.findByRole('textbox');
-    expect(input).toBeInTheDocument();
-    expect(input).toHaveAttribute('autocomplete', 'given-name');
+    expect(input).toHaveAttribute('autocomplete', 'current-password');
   });
 
   it('input must have label attributes configured correctly when single question and no override', async () => {
     const mockOnChange = jest.fn();
     const mockOnBlur = jest.fn();
     render(
-      <TextInput
+      <PasswordInput
         label="label text"
         identifier="inputName"
         onChange={mockOnChange}
@@ -445,7 +293,7 @@ describe('Input renders correctly', () => {
     const mockOnChange = jest.fn();
     const mockOnBlur = jest.fn();
     render(
-      <TextInput
+      <PasswordInput
         label="label text"
         identifier="inputName"
         labelClassExt="class-override"
@@ -466,7 +314,7 @@ describe('Input renders correctly', () => {
     const mockOnChange = jest.fn();
     const mockOnBlur = jest.fn();
     render(
-      <TextInput
+      <PasswordInput
         label="label text"
         identifier="inputName"
         multiQuestion
@@ -484,7 +332,7 @@ describe('Input renders correctly', () => {
     const mockOnChange = jest.fn();
     const mockOnBlur = jest.fn();
     render(
-      <TextInput
+      <PasswordInput
         label="label text"
         identifier="inputName"
         multiQuestion
@@ -503,23 +351,25 @@ describe('Input renders correctly', () => {
     const mockOnChange = jest.fn();
     const mockOnBlur = jest.fn();
     render(
-      <TextInput
+      <PasswordInput
         label="label text"
         identifier="inputName"
         onChange={mockOnChange}
         onBlur={mockOnBlur}
       />
     );
-    const input = await screen.findByRole('textbox');
+    const input = await screen.findByLabelText('label text');
     expect(input).toBeInTheDocument();
-    expect(input).toHaveClass('govuk-input');
+    expect(input).toHaveClass(
+      'govuk-input govuk-password-input__input govuk-js-password-input-input'
+    );
   });
 
   it('input must have class attributes configured correctly when class overriden', async () => {
     const mockOnChange = jest.fn();
     const mockOnBlur = jest.fn();
     render(
-      <TextInput
+      <PasswordInput
         label="label text"
         identifier="inputName"
         inputClassExt="class-override"
@@ -527,16 +377,18 @@ describe('Input renders correctly', () => {
         onBlur={mockOnBlur}
       />
     );
-    const input = await screen.findByRole('textbox');
+    const input = await screen.findByLabelText('label text');
     expect(input).toBeInTheDocument();
-    expect(input).toHaveClass('govuk-input class-override');
+    expect(input).toHaveClass(
+      'govuk-input govuk-password-input__input govuk-js-password-input-input class-override'
+    );
   });
 
   it('input must have disabled attributes configured correctly when disabled', async () => {
     const mockOnChange = jest.fn();
     const mockOnBlur = jest.fn();
     render(
-      <TextInput
+      <PasswordInput
         label="label"
         identifier="inputName"
         disabled
@@ -544,7 +396,7 @@ describe('Input renders correctly', () => {
         onBlur={mockOnBlur}
       />
     );
-    const input = await screen.findByRole('textbox');
+    const input = await screen.findByLabelText('label');
     expect(input).toBeDisabled();
     expect(input).toHaveAttribute('aria-disabled', 'true');
     expect(input).toHaveAttribute('disabled');
@@ -554,14 +406,14 @@ describe('Input renders correctly', () => {
     const mockOnChange = jest.fn();
     const mockOnBlur = jest.fn();
     render(
-      <TextInput
+      <PasswordInput
         label="label"
         identifier="inputName"
         onChange={mockOnChange}
         onBlur={mockOnBlur}
       />
     );
-    const input = await screen.findByRole('textbox');
+    const input = await screen.findByLabelText('label');
     expect(input).toBeEnabled();
   });
 
@@ -569,7 +421,7 @@ describe('Input renders correctly', () => {
     const mockOnChange = jest.fn();
     const mockOnBlur = jest.fn();
     render(
-      <TextInput
+      <PasswordInput
         label="label"
         identifier="inputName"
         hint="this is the hint"
@@ -593,7 +445,7 @@ describe('Input renders correctly', () => {
     const mockOnChange = jest.fn();
     const mockOnBlur = jest.fn();
     render(
-      <TextInput
+      <PasswordInput
         label="label"
         identifier="inputName"
         error="this is the error"
@@ -612,75 +464,82 @@ describe('Input renders correctly', () => {
     expect(error).toBeInTheDocument();
     expect(error).toHaveClass('govuk-error-message');
     expect(error).toHaveAttribute('id', 'inputName-error');
-  });
 
-  it('input must correctly add prefix', async () => {
-    const mockOnChange = jest.fn();
-    const mockOnBlur = jest.fn();
-    render(
-      <TextInput
-        label="label text"
-        identifier="inputName"
-        prefix="£"
-        onChange={mockOnChange}
-        onBlur={mockOnBlur}
-      />
-    );
-    const prefix = await screen.findByText('£');
-    expect(prefix).toBeInTheDocument();
-    expect(prefix).toHaveClass('govuk-input__prefix');
-    expect(prefix).toHaveAttribute('aria-hidden', 'true');
-  });
+    const wrapper = input.parentNode as HTMLElement;
+    expect(wrapper).toHaveClass('govuk-input__wrapper');
+    expect(wrapper).toBeInTheDocument();
 
-  it('input must correctly add suffix', async () => {
-    const mockOnChange = jest.fn();
-    const mockOnBlur = jest.fn();
-    render(
-      <TextInput
-        label="label text"
-        identifier="inputName"
-        suffix="kg"
-        onChange={mockOnChange}
-        onBlur={mockOnBlur}
-      />
-    );
-
-    const suffix = await screen.findByText('kg');
-    expect(suffix).toBeInTheDocument();
-    expect(suffix).toHaveClass('govuk-input__suffix');
-    expect(suffix).toHaveAttribute('aria-hidden', 'true');
-
-    const suffixWrapper = suffix.parentNode as HTMLElement;
-    expect(suffixWrapper).toBeInTheDocument();
-    expect(suffixWrapper).toHaveClass('govuk-input__wrapper');
-
-    const container = suffixWrapper.parentNode as HTMLDivElement;
+    const container = wrapper.parentNode as HTMLElement;
     expect(container).toBeInTheDocument();
-    expect(container).toHaveClass('govuk-form-group');
+    expect(container).toHaveClass('govuk-form-group govuk-form-group--error');
+  });
+
+  it('input must render password toggle button correctly', async () => {
+    const mockOnChange = jest.fn();
+    const mockOnBlur = jest.fn();
+    render(
+      <PasswordInput
+        label="label"
+        identifier="inputName"
+        onChange={mockOnChange}
+        onBlur={mockOnBlur}
+      />
+    );
+    const button = screen.getByLabelText('Show password');
+    expect(button).toBeInTheDocument();
+    expect(button).toHaveClass(
+      'govuk-button govuk-button--secondary govuk-password-input__toggle govuk-js-password-input-toggle'
+    );
+    expect(button).toHaveAttribute('type', 'button');
+    expect(button).toHaveAttribute('data-module', 'govuk-button');
+    expect(button).toHaveAttribute('aria-controls', 'inputName');
+    expect(button).toHaveAttribute('aria-label', 'Show password');
+  });
+  it('input must render aria explanation section correctly', async () => {
+    const mockOnChange = jest.fn();
+    const mockOnBlur = jest.fn();
+    render(
+      <PasswordInput
+        label="label"
+        identifier="inputName"
+        onChange={mockOnChange}
+        onBlur={mockOnBlur}
+      />
+    );
+    const button = screen.getByLabelText('Show password');
+    const ariaSection = button.previousSibling as HTMLDivElement;
+
+    expect(ariaSection).toBeInTheDocument();
+    expect(ariaSection).toHaveClass(
+      'govuk-password-input__sr-status govuk-visually-hidden'
+    );
+    expect(ariaSection).toHaveAttribute('aria-live', 'polite');
+    expect(ariaSection).toHaveTextContent('Your password is hidden');
   });
 });
 
-describe('Input functions correctly', () => {
+describe('Password Input functions correctly', () => {
   it('input must be blank when setup blank', async () => {
     const mockOnChange = jest.fn();
     const mockOnBlur = jest.fn();
     render(
-      <TextInput
+      <PasswordInput
         label="label text"
         identifier="inputName"
         onChange={mockOnChange}
         onBlur={mockOnBlur}
       />
     );
-    const input = await screen.findByRole('textbox');
+    const input = await screen.findByLabelText('label text');
     expect(input).toBeInTheDocument();
     expect(input).toHaveValue('');
   });
+
   it('input must be correctly populate value when set', async () => {
     const mockOnChange = jest.fn();
     const mockOnBlur = jest.fn();
     render(
-      <TextInput
+      <PasswordInput
         label="label text"
         identifier="inputName"
         value="this is the value"
@@ -688,22 +547,23 @@ describe('Input functions correctly', () => {
         onBlur={mockOnBlur}
       />
     );
-    const input = await screen.findByRole('textbox');
+    const input = await screen.findByLabelText('label text');
     expect(input).toBeInTheDocument();
     expect(input).toHaveValue('this is the value');
   });
+
   it('input onChange must fire correctly', async () => {
     const mockOnChange = jest.fn();
     const mockOnBlur = jest.fn();
     render(
-      <TextInput
+      <PasswordInput
         label="label text"
         identifier="inputName"
         onChange={mockOnChange}
         onBlur={mockOnBlur}
       />
     );
-    const input = await screen.findByRole('textbox');
+    const input = await screen.findByLabelText('label text');
     expect(input).toBeInTheDocument();
 
     await userEvent.type(input, '23');
@@ -711,18 +571,19 @@ describe('Input functions correctly', () => {
 
     expect(mockOnChange).toHaveBeenCalledTimes(2);
   });
+
   it('input onBlur must fire correctly', async () => {
     const mockOnChange = jest.fn();
     const mockOnBlur = jest.fn();
     render(
-      <TextInput
+      <PasswordInput
         label="label text"
         identifier="inputName"
         onChange={mockOnChange}
         onBlur={mockOnBlur}
       />
     );
-    const input = await screen.findByRole('textbox');
+    const input = await screen.findByLabelText('label text');
     expect(input).toBeInTheDocument();
 
     fireEvent.focus(input);
@@ -730,5 +591,75 @@ describe('Input functions correctly', () => {
     expect(input).toHaveValue('');
 
     expect(mockOnBlur).toHaveBeenCalledTimes(1);
+  });
+
+  it('input must be toggle from Show to Hide mode correctly with click', async () => {
+    const mockOnChange = jest.fn();
+    const mockOnBlur = jest.fn();
+    render(
+      <PasswordInput
+        label="label text"
+        identifier="inputName"
+        onChange={mockOnChange}
+        onBlur={mockOnBlur}
+      />
+    );
+    var input = await screen.findByLabelText('label text');
+    var button = screen.getByLabelText('Show password');
+    const ariaSection = button.previousSibling as HTMLDivElement;
+
+    expect(input).toBeInTheDocument();
+    expect(button).toBeInTheDocument();
+
+    expect(input).toHaveAttribute('type', 'password');
+    expect(button).toHaveTextContent('Show');
+    expect(ariaSection).toHaveTextContent('Your password is hidden');
+
+    await userEvent.click(button);
+
+    expect(input).toHaveAttribute('type', 'text');
+    expect(button).toHaveTextContent('Hide');
+    expect(ariaSection).toHaveTextContent('Your password is visible');
+
+    await userEvent.click(button);
+
+    expect(input).toHaveAttribute('type', 'password');
+    expect(button).toHaveTextContent('Show');
+    expect(ariaSection).toHaveTextContent('Your password is hidden');
+  });
+
+  it('input must be toggle from Show to Hide mode correctly with keydown', async () => {
+    const mockOnChange = jest.fn();
+    const mockOnBlur = jest.fn();
+    render(
+      <PasswordInput
+        label="label text"
+        identifier="inputName"
+        onChange={mockOnChange}
+        onBlur={mockOnBlur}
+      />
+    );
+    var input = await screen.findByLabelText('label text');
+    var button = screen.getByLabelText('Show password');
+    const ariaSection = button.previousSibling as HTMLDivElement;
+
+    expect(input).toBeInTheDocument();
+    expect(button).toBeInTheDocument();
+
+    expect(input).toHaveAttribute('type', 'password');
+    expect(button).toHaveTextContent('Show');
+    expect(ariaSection).toHaveTextContent('Your password is hidden');
+
+    await userEvent.type(button, '{enter}');
+
+    expect(input).toHaveAttribute('type', 'text');
+    expect(button).toHaveTextContent('Hide');
+    expect(ariaSection).toHaveTextContent('Your password is visible');
+
+    await userEvent.click(button);
+
+    expect(input).toHaveAttribute('type', 'password');
+    expect(button).toHaveTextContent('Show');
+    expect(ariaSection).toHaveTextContent('Your password is hidden');
   });
 });

@@ -9,9 +9,12 @@ export interface BaseTextInputProps {
   labelClassExt?: string;
   inputClassExt?: string;
   error?: string;
-  spellCheck?: boolean;
   disabled?: boolean;
   value?: string;
+}
+
+export interface NonPasswordBaseInputProps extends BaseTextInputProps {
+  spellCheck?: boolean;
 }
 
 export enum TextInputWidth {
@@ -44,7 +47,27 @@ export const TextInputWidthClass = new Map<number, string>([
   [TextInputWidth.Char2, 'govuk-input--width-2'],
 ]);
 
-export interface TextInputProps extends BaseTextInputProps {
+export enum PasswordState {
+  Password = 1,
+  Text = 2,
+}
+
+export const GetButtonTextFromPasswordState = new Map<number, string>([
+  [PasswordState.Password, 'Show'],
+  [PasswordState.Text, 'Hide'],
+]);
+
+export const GetInputTypeFromPasswordState = new Map<number, string>([
+  [PasswordState.Password, 'password'],
+  [PasswordState.Text, 'text'],
+]);
+
+export const GetAriaTextFromPasswordState = new Map<number, string>([
+  [PasswordState.Password, 'Your password is hidden'],
+  [PasswordState.Text, 'Your password is visible'],
+]);
+
+export interface TextInputProps extends NonPasswordBaseInputProps {
   inputMode?: 'numeric';
   inputType?: 'password' | 'email';
   prefix?: string;
@@ -56,17 +79,26 @@ export interface TextInputProps extends BaseTextInputProps {
   onBlur: (value: FocusEvent<HTMLInputElement>) => void;
 }
 
-export interface TextAreaProps extends BaseTextInputProps {
+export interface TextAreaProps extends NonPasswordBaseInputProps {
   rows?: number;
   ariaExtension?: string;
   onChange: (value: ChangeEvent<HTMLTextAreaElement>) => void;
   onBlur: (value: FocusEvent<HTMLTextAreaElement>) => void;
 }
 
-export interface TextCounterProps extends BaseTextInputProps, TextAreaProps {
+export interface TextCounterProps
+  extends NonPasswordBaseInputProps,
+    TextAreaProps {
   counterType: 'character' | 'word';
   maxCount: number;
   threshold?: number;
+}
+
+export interface PasswordInputProps extends NonPasswordBaseInputProps {
+  width?: TextInputWidth;
+  inErrorState?: boolean;
+  onChange: (value: ChangeEvent<HTMLInputElement>) => void;
+  onBlur: (value: FocusEvent<HTMLInputElement>) => void;
 }
 
 export interface CounterResult {

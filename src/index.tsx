@@ -35,6 +35,7 @@ export {
 export { TextInput } from './UI/Input/TextInput';
 export { TextArea } from './UI/Input/TextArea';
 export { TextCounter } from './UI/Input/TextCounter';
+export { PasswordInput } from './UI/Input/PasswordInput';
 export {
   TextInputProps,
   TextAreaProps,

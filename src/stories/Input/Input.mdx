@@ -1,4 +1,4 @@
-import { Meta } from '@storybook/addon-docs';
+import { Meta } from '@storybook/blocks';
 
 <Meta title="Components/Input/Information" />
 
@@ -14,16 +14,20 @@ import { Meta } from '@storybook/addon-docs';
 <ul>
   <li>Label - contains the element label</li>
   <li>Hint - contains a hint to assist the user</li>
-  <li>
-    Multi Question - adjusts the label to not contain an H1 tag to be compliant
-  </li>
+
+{' '}
+
+<li>
+  Multi Question - adjusts the label to not contain an H1 tag to be compliant
+</li>
+
   <li>Error - displays the error and configures all aria attributes</li>
   <li>Value - Pre selected value</li>
-  <li>Spell Check - applies the users browser spell checking</li>
   <li>Disabled - renders the input as disabled</li>
 </ul>
 
 <h3>Text Input</h3>
+
 <p>
   Use the text input component when you need to let users enter text that’s no
   longer than a single line, such as their name or phone number.
@@ -47,15 +51,20 @@ import { Meta } from '@storybook/addon-docs';
 <ul>
   <li>
     Input Type - sets the type of input, configuration can be
+
     <ul>
       <li>default - text</li>
       <li>password</li>
       <li>email</li>
       <li>numeric</li>
     </ul>
+
+    <p><strong>With the introduction of the Password input control, the password option has been depreciated and will be removed in a future version.</strong></p>
+
   </li>
   <li>Prefix - applies a styled prefix to the input</li>
   <li>Suffix - applies a styled suffix to the input</li>
+  <li>Spell Check - applies the users browser spell checking</li>
   <li>Auto Complete - allows an html auto-complete value to be applied</li>
   <li>
     Width - allows preset GDS text input widths to be applied <i>1-10</i>
@@ -89,6 +98,7 @@ import { Meta } from '@storybook/addon-docs';
     Rows - specifies the number of rows that the text area initially is rendered
     with
   </li>
+  <li>Spell Check - applies the users browser spell checking</li>
 </ul>
 
 <h3>Text Character Count</h3>
@@ -116,11 +126,32 @@ import { Meta } from '@storybook/addon-docs';
 <ul>
   <li>
     Counter Type - specifies the type of counting:
+
     <ul>
       <li>Character - counts the individual characters</li>
       <li>Word - counts the text split into words</li>
     </ul>
+
   </li>
+
   <li>Max Count - determines the maximum number of countable elements</li>
   <li>Threshold - Optional - hides the warning until this value is met</li>
+  <li>Spell Check - applies the users browser spell checking</li>
 </ul>
+
+<h3>Password Input</h3>
+
+<p>Help users to create and enter passwords.</p>
+
+<p>
+  You can view the full implementation details on the Password input section of
+  the GDS website.
+</p>
+
+<a
+  href="https://design-system.service.gov.uk/components/password-input/"
+  target="_blank"
+  rel="noreferrer"
+>
+  Learn more >>
+</a>

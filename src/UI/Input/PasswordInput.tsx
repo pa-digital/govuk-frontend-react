@@ -1,45 +1,47 @@
-import React from 'react';
-import { TextInputProps, TextInputWidthClass } from './InputCommon';
+import React, { useState } from 'react';
+import {
+  PasswordInputProps,
+  PasswordState,
+  TextInputWidthClass,
+  GetInputTypeFromPasswordState,
+  GetButtonTextFromPasswordState,
+  GetAriaTextFromPasswordState,
+} from './InputCommon';
 
-export function TextInput({
+export function PasswordInput({
   identifier,
   label,
+  hint,
   multiQuestion,
   required,
-  inputType,
-  inputMode,
   labelClassExt,
   inputClassExt,
-  autoComplete,
-  hint,
-  prefix,
-  suffix,
-  width,
   error,
-  inErrorState,
-  spellCheck,
-  disabled,
   value,
+  disabled,
+  width,
+  inErrorState,
   onChange,
   onBlur,
-}: TextInputProps) {
+}: PasswordInputProps) {
   const containerAttr = {
     className: error
-      ? 'govuk-form-group govuk-form-group--error'
-      : 'govuk-form-group',
+      ? 'govuk-form-group govuk-form-group--error govuk-password-input'
+      : 'govuk-form-group govuk-password-input',
   };
+
+  const [inputState, setInputState] = useState(PasswordState.Password);
+
   const inputAttr = {
     required,
     'aria-required': required,
-    type: inputType || 'text',
-    className: 'govuk-input',
-    autoComplete,
-    spellCheck,
+    type: GetInputTypeFromPasswordState.get(inputState),
+    className:
+      'govuk-input govuk-password-input__input govuk-js-password-input-input',
     'aria-describedby': '',
     'aria-invalid': false,
     disabled,
     'aria-disabled': disabled,
-    inputMode,
   };
   if (width) {
     inputAttr.className += ` ${TextInputWidthClass.get(width)}`;
@@ -75,8 +77,16 @@ export function TextInput({
     id: `${identifier}-label`,
   };
 
+  const handleShowPasswordClick = () => {
+    if (inputState === PasswordState.Password) {
+      setInputState(PasswordState.Text);
+    } else {
+      setInputState(PasswordState.Password);
+    }
+  };
+
   return (
-    <div {...containerAttr}>
+    <div {...containerAttr} data-module="govuk-password-input">
       {multiQuestion ? (
         <label htmlFor={identifier} {...labelAttr}>
           {label}
@@ -101,37 +111,36 @@ export function TextInput({
         </p>
       )}
 
-      {prefix || suffix ? (
-        <div className="govuk-input__wrapper">
-          {prefix && (
-            <div className="govuk-input__prefix" aria-hidden="true">
-              {prefix}
-            </div>
-          )}
-          <input
-            id={identifier}
-            name={identifier}
-            {...inputAttr}
-            value={value}
-            onChange={onChange}
-            onBlur={onBlur}
-          />
-          {suffix && (
-            <div className="govuk-input__suffix" aria-hidden="true">
-              {suffix}
-            </div>
-          )}
-        </div>
-      ) : (
+      <div className="govuk-input__wrapper govuk-password-input__wrapper">
         <input
           id={identifier}
           name={identifier}
           {...inputAttr}
           value={value}
+          spellCheck="false"
+          autoComplete="current-password"
+          autoCapitalize="none"
           onChange={onChange}
           onBlur={onBlur}
         />
-      )}
+        <div
+          className="govuk-password-input__sr-status govuk-visually-hidden"
+          aria-live="polite"
+        >
+          {GetAriaTextFromPasswordState.get(inputState)}
+        </div>
+        <button
+          type="button"
+          className="govuk-button govuk-button--secondary govuk-password-input__toggle govuk-js-password-input-toggle"
+          data-module="govuk-button"
+          aria-controls={identifier}
+          aria-label={`${GetButtonTextFromPasswordState.get(inputState)} password`}
+          onClick={() => handleShowPasswordClick()}
+          onKeyDown={() => handleShowPasswordClick()}
+        >
+          {GetButtonTextFromPasswordState.get(inputState)}
+        </button>
+      </div>
     </div>
   );
 }

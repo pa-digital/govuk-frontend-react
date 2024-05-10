@@ -1,13 +1,12 @@
 import React from 'react';
-import { act } from 'react-dom/test-utils';
 import {
-  fireEvent,
   render,
   screen,
   axe,
   toHaveNoViolations,
 } from '../../Helper/testHelper';
 import Checkbox from './Checkbox';
+import { userEvent } from '@storybook/test';
 
 expect.extend(toHaveNoViolations);
 
@@ -136,9 +135,7 @@ describe('Checkbox functions correctly', () => {
     );
 
     const checkBox = screen.getByRole('checkbox');
-    act(() => {
-      fireEvent.click(checkBox);
-    });
+    await userEvent.click(checkBox);
 
     expect(checkBox).toBeChecked();
     expect(mockOnCheckChanged).toHaveBeenCalledTimes(1);
@@ -160,9 +157,7 @@ describe('Checkbox functions correctly', () => {
 
     const checkBox = screen.getByRole('checkbox');
     expect(checkBox).toBeChecked();
-    act(() => {
-      fireEvent.click(checkBox);
-    });
+    await userEvent.click(checkBox);
     expect(checkBox).not.toBeChecked();
     expect(mockOnCheckChanged).toHaveBeenCalledTimes(1);
   });
@@ -183,15 +178,11 @@ describe('Checkbox functions correctly', () => {
     const checkBox = screen.getByRole('checkbox');
     expect(checkBox).not.toBeChecked();
 
-    act(() => {
-      fireEvent.click(checkBox);
-    });
+    await userEvent.click(checkBox);
     expect(checkBox).toBeChecked();
     expect(mockOnCheckChanged).toHaveBeenCalledTimes(1);
 
-    act(() => {
-      fireEvent.click(checkBox);
-    });
+    await userEvent.click(checkBox);
     expect(checkBox).not.toBeChecked();
     expect(mockOnCheckChanged).toHaveBeenCalledTimes(2);
   });
