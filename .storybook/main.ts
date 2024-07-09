@@ -9,9 +9,8 @@ const config: StorybookConfig = {
     '@storybook/addon-onboarding',
     '@storybook/addon-interactions',
     '@storybook/addon-a11y',
-    '@storybook/addon-mdx-gfm',
     '@storybook/addon-webpack5-compiler-swc',
-    '@chromatic-com/storybook'
+    '@chromatic-com/storybook',
   ],
 
   framework: {
@@ -28,8 +27,10 @@ const config: StorybookConfig = {
 
   features: {},
 
-  docs: {
-    autodocs: true
-  }
+  docs: {},
+
+  typescript: {
+    reactDocgen: 'react-docgen-typescript',
+  },
 };
 export default config;
