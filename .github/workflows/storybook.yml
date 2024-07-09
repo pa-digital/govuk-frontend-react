@@ -12,21 +12,19 @@ on:
   workflow_dispatch:
 
 jobs:
-  deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.build-publish.outputs.page_url }}
+  build:
+    # The type of runner that the job will run on
     runs-on: ubuntu-latest
-    permissions: 
-      id-token: write
-      pages: write
-      contents: read
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v4
+
+      # Installs Yarn
       - name: NPM Install
         run: npm install
-      - id: build-publish
-        uses: bitovi/github-actions-storybook-to-github-pages@v1.0.2
-        with:
-          token: ${{ secrets.PACKAGE_TOKEN }}
-          path: /home/runner/work/govuk-frontend-react/govuk-frontend-react/storybook-static
-          build_command: npm run build-storybook
+
+      # Runs Build
+      - name: NPM Execute build and creates tsdx files
+        run: npm run build-storybook
