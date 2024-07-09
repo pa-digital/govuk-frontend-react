@@ -27,4 +27,20 @@ jobs:
 
       # Runs Build
       - name: NPM Execute build and creates tsdx files
-        run: npm run build-storybook
+        run: npm run build
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.build-publish.outputs.page_url }}
+    runs-on: ubuntu-latest
+    permissions: 
+      id-token: write
+      pages: write
+      contents: read
+    steps:
+      - id: build-publish
+        uses: bitovi/github-actions-storybook-to-github-pages@v1.0.2
+        with:
+          token: ${{ secrets.PACKAGE_TOKEN }}
+          path: /home/runner/work/govuk-frontend-react/govuk-frontend-react/storybook-static
+          build_command: npm run build-storybook
