@@ -39,7 +39,7 @@ jobs:
       contents: read
     steps:
       - id: build-publish
-        uses: bitovi/github-actions-storybook-to-github-pages@v1.0.2
+        uses: bitovi/github-actions-storybook-to-github-pages@v1.0.3
         with:
           token: ${{ secrets.PACKAGE_TOKEN }}
           path: /home/runner/work/govuk-frontend-react/govuk-frontend-react/storybook-static
