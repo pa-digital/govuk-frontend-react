@@ -66,7 +66,6 @@ export const CheckBoxList = memo(
 
     const handleOnChange = (e: any) => {
       let updatedList = clone<CheckBoxDataProps[]>(checkBoxList);
-      console.log(JSON.stringify(e.target.value, null, 2));
       const valuesIndex = checkBoxList.findIndex(
         (x) => x.value === e.target.value
       );
