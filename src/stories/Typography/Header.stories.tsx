@@ -1,11 +1,13 @@
-import React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import { Header } from '../../UI/Typography/Header';
 
-export default {
+const meta = {
   title: 'Components/Typography/Header/Implementation',
   component: Header,
-} as ComponentMeta<typeof Header>;
+} satisfies Meta<typeof Header>;
+
+export default meta;
+type Story = StoryObj<typeof meta>;
 
 export const H1: Story = {
   args: {

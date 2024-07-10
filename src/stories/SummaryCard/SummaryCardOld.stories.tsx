@@ -2,8 +2,9 @@ import React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import { MemoryRouter as Router } from 'react-router-dom';
 import { SummaryListItemProps } from '../../UI/SummaryList/SummaryList';
-import { SummaryCard, CardAction } from '../../UI/SummaryCard/SummaryCard';
+import { SummaryCard } from '../../UI/SummaryCard/SummaryCard';
 import { action } from '@storybook/addon-actions';
+import { CardAction } from '../../UI/SummaryCard/SummaryCardProps';
 
 const SummaryData: SummaryListItemProps[] = [
   {
@@ -72,11 +73,11 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-  render: () => {
-    const args = {
-      title: 'Lead tenant',
-      summaryList: SummaryData,
-    };
+  args: {
+    title: 'Lead tenant',
+    summaryList: SummaryData,
+  },
+  render: function Render(args) {
     return (
       <Router>
         <SummaryCard
@@ -89,12 +90,12 @@ export const Default: Story = {
 };
 
 export const Actions: Story = {
-  render: () => {
-    const args = {
-      title: 'Update tenants',
-      summaryList: SummaryData,
-      cardActions: ActionsData,
-    };
+  args: {
+    title: 'Update tenants',
+    summaryList: SummaryData,
+    cardActions: ActionsData,
+  },
+  render: function Render(args) {
     return (
       <Router>
         <SummaryCard

@@ -155,10 +155,10 @@ const MissingSummaryData: SummaryListItemProps[] = [
 ];
 
 export const Default: Story = {
-  render: () => {
-    const args = {
-      list: SummaryData,
-    };
+  args: {
+    list: SummaryData,
+  },
+  render: function Render(args) {
     return (
       <Router>
         <SummaryList {...args} />
@@ -168,10 +168,10 @@ export const Default: Story = {
 };
 
 export const WithActions: Story = {
-  render: () => {
-    const args = {
-      list: ActionSummaryData,
-    };
+  args: {
+    list: ActionSummaryData,
+  },
+  render: function Render(args) {
     return (
       <Router>
         <SummaryList {...args} />
@@ -181,10 +181,10 @@ export const WithActions: Story = {
 };
 
 export const PartialActions: Story = {
-  render: () => {
-    const args = {
-      list: PartialActionSummaryData,
-    };
+  args: {
+    list: PartialActionSummaryData,
+  },
+  render: function Render(args) {
     return (
       <Router>
         <SummaryList {...args} />
@@ -194,11 +194,11 @@ export const PartialActions: Story = {
 };
 
 export const HiddenBorders: Story = {
-  render: () => {
-    const args = {
-      list: SummaryData,
-      hideBorders: true,
-    };
+  args: {
+    list: SummaryData,
+    hideBorders: true,
+  },
+  render: function Render(args) {
     return (
       <Router>
         <SummaryList {...args} />
@@ -208,10 +208,10 @@ export const HiddenBorders: Story = {
 };
 
 export const MissingInformation: Story = {
-  render: () => {
-    const args = {
-      list: MissingSummaryData,
-    };
+  args: {
+    list: MissingSummaryData,
+  },
+  render: function Render(args) {
     return (
       <Router>
         <SummaryList {...args} />

@@ -1,7 +1,7 @@
 import React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import { MemoryRouter as Router } from 'react-router-dom';
-import { NavLink, NavLinkProps } from '../../UI/NavLink/NavLink';
+import { NavLink } from '../../UI/NavLink/NavLink';
 
 const meta = {
   title: 'Components/Navigation/Nav Link',
@@ -12,11 +12,11 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-  render: () => {
-    const args: NavLinkProps = {
-      to: '/',
-      text: 'Home',
-    };
+  args: {
+    to: '/',
+    text: 'Home',
+  },
+  render: function Render(args) {
     return (
       <Router>
         <NavLink {...args} />
@@ -26,12 +26,12 @@ export const Default: Story = {
 };
 
 export const Assistive: Story = {
-  render: () => {
-    const args: NavLinkProps = {
-      to: 'https://www.google.co.uk',
-      text: 'Search for results',
-      assistiveText: 'Search on Google',
-    };
+  args: {
+    to: 'https://www.google.co.uk',
+    text: 'Search for results',
+    assistiveText: 'Search on Google',
+  },
+  render: function Render(args) {
     return (
       <Router>
         <NavLink {...args} />
@@ -41,12 +41,12 @@ export const Assistive: Story = {
 };
 
 export const External: Story = {
-  render: () => {
-    const args: NavLinkProps = {
-      to: 'https://www.google.co.uk',
-      text: 'Google homepage',
-      external: true,
-    };
+  args: {
+    to: 'https://www.google.co.uk',
+    text: 'Google homepage',
+    external: true,
+  },
+  render: function Render(args) {
     return (
       <Router>
         <NavLink {...args} />

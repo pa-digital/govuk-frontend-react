@@ -90,11 +90,11 @@ const TableRowData: TableRowDataProps[] = [
 ];
 
 export const Default: Story = {
-  render: () => {
-    const args = {
-      columnHeaders: TableHeaderData,
-      rows: TableRowData,
-    };
+  args: {
+    columnHeaders: TableHeaderData,
+    rows: TableRowData,
+  },
+  render: function Render(args) {
     return (
       <Router>
         <Table {...args} />
@@ -104,12 +104,12 @@ export const Default: Story = {
 };
 
 export const Caption: Story = {
-  render: () => {
-    const args = {
-      caption: 'Table caption',
-      columnHeaders: TableHeaderData,
-      rows: TableRowData,
-    };
+  args: {
+    caption: 'Table caption',
+    columnHeaders: TableHeaderData,
+    rows: TableRowData,
+  },
+  render: function Render(args) {
     return (
       <Router>
         <Table {...args} />

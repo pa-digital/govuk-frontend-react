@@ -12,13 +12,13 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-  render: () => {
-    const args: CTAButtonProps = {
-      variant: 'primary',
-      children: 'Button',
-      to: 'www.google.co.uk',
-      assistiveText: 'Search using google',
-    };
+  args: {
+    variant: 'primary',
+    children: 'Button',
+    to: 'www.google.co.uk',
+    assistiveText: 'Search using google',
+  },
+  render: function Render(args) {
     return (
       <Router>
         <CTAButton {...args}></CTAButton>
@@ -28,13 +28,13 @@ export const Default: Story = {
 };
 
 export const Secondary: Story = {
-  render: () => {
-    const args: CTAButtonProps = {
-      variant: 'secondary',
-      children: 'Button',
-      to: 'www.google.co.uk',
-      assistiveText: 'Search using google',
-    };
+  args: {
+    variant: 'secondary',
+    children: 'Button',
+    to: 'www.google.co.uk',
+    assistiveText: 'Search using google',
+  },
+  render: function Render(args) {
     return (
       <Router>
         <CTAButton {...args}></CTAButton>
@@ -44,13 +44,13 @@ export const Secondary: Story = {
 };
 
 export const Warning: Story = {
-  render: () => {
-    const args: CTAButtonProps = {
-      variant: 'warning',
-      children: 'Button',
-      to: 'www.google.co.uk',
-      assistiveText: 'Search using google',
-    };
+  args: {
+    variant: 'warning',
+    children: 'Button',
+    to: 'www.google.co.uk',
+    assistiveText: 'Search using google',
+  },
+  render: function Render(args) {
     return (
       <Router>
         <CTAButton {...args}></CTAButton>
@@ -60,14 +60,14 @@ export const Warning: Story = {
 };
 
 export const Disabled: Story = {
-  render: () => {
-    const args: CTAButtonProps = {
-      variant: 'primary',
-      children: 'Button',
-      to: 'www.google.co.uk',
-      assistiveText: 'Search using google',
-      disabled: true,
-    };
+  args: {
+    variant: 'primary',
+    children: 'Button',
+    to: 'www.google.co.uk',
+    assistiveText: 'Search using google',
+    disabled: true,
+  },
+  render: function Render(args) {
     return (
       <Router>
         <CTAButton {...args}></CTAButton>

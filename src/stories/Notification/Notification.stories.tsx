@@ -12,29 +12,29 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-  render: () => {
-    const args: NotificationProps = {
-      identifier: 'Notification',
-      heading: 'Notification heading',
-      content: [
-        {
-          text: 'first paragraph text',
-          link: {
-            to: '/firstlink',
-            text: 'first link text',
-          },
+  args: {
+    identifier: 'Notification',
+    heading: 'Notification heading',
+    content: [
+      {
+        text: 'first paragraph text',
+        link: {
+          to: '/firstlink',
+          text: 'first link text',
         },
-        {
-          text: 'second paragraph text',
-          link: {
-            to: 'https://www.google.co.uk',
-            $external: true,
-            $assistiveText: 'Search via Google',
-            text: 'search via Google',
-          },
+      },
+      {
+        text: 'second paragraph text',
+        link: {
+          to: 'https://www.google.co.uk',
+          external: true,
+          assistiveText: 'Search via Google',
+          text: 'search via Google',
         },
-      ],
-    };
+      },
+    ],
+  },
+  render: function Render(args) {
     return (
       <Router>
         <Notification {...args} />

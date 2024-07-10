@@ -1,11 +1,13 @@
-import React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import { Content } from '../../UI/Typography/Content';
 
-export default {
+const meta = {
   title: 'Components/Typography/Content/Implementation',
   component: Content,
-} as ComponentMeta<typeof Content>;
+} satisfies Meta<typeof Content>;
+
+export default meta;
+type Story = StoryObj<typeof meta>;
 
 export const Paragraph: Story = {
   args: {

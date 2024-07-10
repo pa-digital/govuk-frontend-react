@@ -13,25 +13,25 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-  render: () => {
-    const args: NavigationProps = {
-      links: [
-        {
-          to: '/',
-          text: 'Home',
-        },
-        {
-          to: '/content',
-          text: 'Content',
-        },
-        {
-          to: '/examples',
-          text: 'Examples',
-          assistiveText:
-            'Some examples of the implementation of the GDS Frameworks',
-        },
-      ],
-    };
+  args: {
+    links: [
+      {
+        to: '/',
+        text: 'Home',
+      },
+      {
+        to: '/content',
+        text: 'Content',
+      },
+      {
+        to: '/examples',
+        text: 'Examples',
+        assistiveText:
+          'Some examples of the implementation of the GDS Frameworks',
+      },
+    ],
+  },
+  render: function Render(args) {
     return (
       <Router>
         <div className="govuk-header__container govuk-width-container">

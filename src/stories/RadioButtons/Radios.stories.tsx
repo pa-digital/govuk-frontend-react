@@ -18,7 +18,7 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {
-    identifier: 'radiobuttons',
+    identifier: 'defaultradio',
     header: 'Radio button list',
     data: WhereDoYouLiveData,
     onValueChange: fn(),
@@ -27,7 +27,7 @@ export const Default: Story = {
 
 export const Compact: Story = {
   args: {
-    identifier: 'radiobuttons',
+    identifier: 'compactradio',
     header: 'Radio button list in compact mode',
     data: WhereDoYouLiveData,
     compact: true,
@@ -37,7 +37,7 @@ export const Compact: Story = {
 
 export const MultiQuestion: Story = {
   args: {
-    identifier: 'radiobuttons',
+    identifier: 'multiradio',
     header: 'Radio button list in multi question mode',
     data: WhereDoYouLiveData,
     multiQuestion: true,
@@ -47,7 +47,7 @@ export const MultiQuestion: Story = {
 
 export const Divider: Story = {
   args: {
-    identifier: 'radiobuttons',
+    identifier: 'dividerradio',
     header: 'Radio button list with divider',
     data: WhereDoYouLiveExtData,
     onValueChange: fn(),
@@ -56,7 +56,7 @@ export const Divider: Story = {
 
 export const Hint: Story = {
   args: {
-    identifier: 'radiobuttons',
+    identifier: 'hintradio',
     header: 'Radio button list with hints',
     hint: 'Radio button list hint',
     data: SignInData,
@@ -66,7 +66,7 @@ export const Hint: Story = {
 
 export const Inline: Story = {
   args: {
-    identifier: 'radiobuttons',
+    identifier: 'inlineradio',
     header: 'Radio button list as an inline display',
     render: 'inline',
     data: WhereDoYouLiveData,
@@ -76,7 +76,7 @@ export const Inline: Story = {
 
 export const Preset: Story = {
   args: {
-    identifier: 'radiobuttons',
+    identifier: 'presetradio',
     header: 'Radio button list with present options',
     data: PreSelectedNameChangeData,
     onValueChange: fn(),
@@ -85,7 +85,7 @@ export const Preset: Story = {
 
 export const Error: Story = {
   args: {
-    identifier: 'radiobuttons',
+    identifier: 'errorradio',
     header: 'Radio button list with error message',
     error: 'You must select a value',
     data: WhereDoYouLiveData,

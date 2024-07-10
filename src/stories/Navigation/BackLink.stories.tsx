@@ -12,10 +12,10 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-  render: () => {
-    const args = {
-      to: '/test',
-    };
+  args: {
+    to: '/test',
+  },
+  render: function Render(args) {
     return (
       <Router>
         <BackLink {...args} />

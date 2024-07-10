@@ -116,6 +116,7 @@ export const Compact: Story = {
     header: 'Checkbox list in compact mode',
     data: DefaultCheckBoxData,
     compact: true,
+    onValueChange: fn(),
   },
 };
 
@@ -125,6 +126,7 @@ export const MultiQuestion: Story = {
     header: 'Checkbox list in multi question mode',
     data: DefaultCheckBoxData,
     multiQuestion: true,
+    onValueChange: fn(),
   },
 };
 
@@ -133,6 +135,7 @@ export const Divider: Story = {
     identifier: 'checkboxlist',
     header: 'Checkbox list with divider',
     data: DividerCheckBoxData,
+    onValueChange: fn(),
   },
 };
 
@@ -142,6 +145,7 @@ export const Hint: Story = {
     header: 'Checkbox list with hints',
     hint: 'Checkbox list hint',
     data: HintCheckBoxData,
+    onValueChange: fn(),
   },
 };
 
@@ -150,6 +154,7 @@ export const PreChecked: Story = {
     identifier: 'checkboxlist',
     header: 'Checkbox list with pre checked options',
     data: PresetCheckBoxData,
+    onValueChange: fn(),
   },
 };
 
@@ -159,6 +164,7 @@ export const ExclusiveCheckBoxes: Story = {
     header: 'Checkbox list with exclusive options',
     hint: 'Select all countries that apply',
     data: ExclusiveCheckBoxData,
+    onValueChange: fn(),
   },
 };
 
@@ -167,6 +173,7 @@ export const ToggleCheckBoxes: Story = {
     identifier: 'checkboxlist',
     header: 'Checkbox list with toggle options',
     data: DefaultCheckBoxData,
+    onValueChange: fn(),
     showToggle: true,
   },
 };
@@ -177,5 +184,6 @@ export const Error: Story = {
     header: 'Checkbox list with error message',
     error: 'You must select a value',
     data: DefaultCheckBoxData,
+    onValueChange: fn(),
   },
 };

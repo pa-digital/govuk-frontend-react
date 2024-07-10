@@ -26,6 +26,8 @@ export const Secondary: Story = {
     variant: 'secondary',
     type: 'button',
     children: 'Button',
+    onClick: fn(),
+    onKeyDown: fn(),
   },
 };
 
@@ -34,27 +36,21 @@ export const Warning: Story = {
     variant: 'warning',
     type: 'button',
     children: 'Button',
+    onClick: fn(),
+    onKeyDown: fn(),
   },
 };
 
 export const Inverse: Story = {
-  render: () => {
-    const args = {
-      variant: 'inverse',
-      type: 'button',
-      children: 'Button',
-    };
-    return (
-      <div
-        style={{
-          backgroundColor: '#1d70b8',
-          textAlign: 'center',
-          paddingTop: '1.5em',
-        }}
-      >
-        <Button {...args} />
-      </div>
-    );
+  args: {
+    variant: 'inverse',
+    type: 'button',
+    children: 'Button',
+    onClick: fn(),
+    onKeyDown: fn(),
+  },
+  render: function Render(args) {
+    return <Button {...args} />;
   },
 };
 
@@ -64,5 +60,7 @@ export const Disabled: Story = {
     type: 'button',
     children: 'Button',
     disabled: true,
+    onClick: fn(),
+    onKeyDown: fn(),
   },
 };
