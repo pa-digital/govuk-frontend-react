@@ -4,9 +4,9 @@ import {
   screen,
   axe,
   toHaveNoViolations,
+  userEvent,
 } from '../../Helper/testHelper';
 import Checkbox from './Checkbox';
-import { userEvent } from '@storybook/test';
 
 expect.extend(toHaveNoViolations);
 
