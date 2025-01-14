@@ -2,6 +2,7 @@ import { Meta, StoryObj } from '@storybook/react/*';
 import { RadioButtons } from '../../UI/Radios/RadioButtons';
 import {
   ConditionalContact,
+  ConditionalContactWithHint,
   ErrorConditionalContact,
   PrefixedConditionalContact,
   PrePopulatedConditionalContact,
@@ -22,6 +23,15 @@ export const Default: Story = {
     identifier: 'defaultconditionalradio',
     header: 'Default Conditional Radio',
     data: ConditionalContact,
+    onValueChange: fn(),
+  },
+};
+
+export const Hint: Story = {
+  args: {
+    identifier: 'hintconditionalradio',
+    header: 'Hint Conditional Radio',
+    data: ConditionalContactWithHint,
     onValueChange: fn(),
   },
 };

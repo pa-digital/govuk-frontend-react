@@ -110,6 +110,35 @@ export const ConditionalContact: RadioButtonDataProps[] = [
   },
 ];
 
+export const ConditionalContactWithHint: RadioButtonDataProps[] = [
+  {
+    text: 'Email',
+    value: 'email',
+    conditionalInput: {
+      context: 'contact-by-email',
+      identifier: 'emailAddress',
+      label: 'Email address',
+      inputType: 'email',
+      hint: 'This is the email you registered with',
+    },
+  },
+  {
+    text: 'Phone',
+    value: 'phone',
+    conditionalInput: {
+      context: 'contact-by-phone',
+      identifier: 'phone',
+      label: 'Phone number',
+      inputMode: 'numeric',
+      hint: 'This can be a mobile or landline',
+    },
+  },
+  {
+    text: 'Do not contact me',
+    value: 'dnc',
+  },
+];
+
 export const PrePopulatedConditionalContact: RadioButtonDataProps[] = [
   {
     text: 'Email',
@@ -134,8 +163,8 @@ export const PrePopulatedConditionalContact: RadioButtonDataProps[] = [
     },
   },
   {
-    text: 'Text message',
-    value: 'text',
+    text: 'Do not contact me',
+    value: 'dnc',
   },
 ];
 
@@ -220,7 +249,7 @@ export const ErrorConditionalContact: RadioButtonDataProps[] = [
     },
   },
   {
-    text: 'Text message',
-    value: 'text',
+    text: 'Do not contact me',
+    value: 'dnc',
   },
 ];

@@ -8,7 +8,7 @@ function RadioButton({
   text,
   value,
   hint,
-  checked,
+  checked = false,
   required,
   conditionalInput,
   onChange,
@@ -42,7 +42,7 @@ function RadioButton({
     spellCheck: conditionalInput?.spellcheck || false,
     autoComplete: conditionalInput?.autoComplete || undefined,
     className: 'govuk-input',
-    value: conditionalInput?.value,
+    value: conditionalInput?.value || '',
     inputMode: conditionalInput?.inputMode || undefined,
     ref: conditionalInputRef,
   };
@@ -90,7 +90,7 @@ function RadioButton({
           name={groupName}
           type="radio"
           value={value}
-          checked={checked}
+          {...(checked && { checked })}
           {...radioButtonAttr}
           onChange={handleCheckChange}
         />

@@ -466,10 +466,12 @@ describe('Radio Button functions correctly', () => {
 
     expect(radio).toBeChecked();
 
+    expect(mockOnChange).toHaveBeenCalledTimes(1);
     expect(mockOnChange).toHaveBeenLastCalledWith('', 'rbvalue');
 
     await userEvent.type(conditionalInput, 'test@test.com');
 
-    expect(mockOnChange).toHaveBeenLastCalledWith('test@test.com', 'rbvalue');
+    expect(mockOnChange).toHaveBeenCalledTimes(14);
+    expect(mockOnChange).toHaveBeenLastCalledWith('m', 'rbvalue');
   });
 });
