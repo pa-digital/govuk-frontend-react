@@ -13,34 +13,79 @@ import { Meta } from '@storybook/blocks';
   website.
 </p>
 
-<a href="https://design-system.service.gov.uk/components/radios/" target="_blank" rel="noreferrer">
+<a
+  href="https://design-system.service.gov.uk/components/radios/"
+  target="_blank"
+  rel="noreferrer"
+>
   Learn more >>
 </a>
 
 <h2>Options</h2>
 
-<p>The Checkbox list can be configured using the following:</p>
+<p>The Radio Button list can be configured using the following:</p>
 
 <ul>
   <li>Label - contains the element label</li>
   <li>Pre Selected - allows a radio button to be pre-selected</li>
   <li>Compact - reduces the overall size of the radio buttons</li>
-
   <li>
     Multi Question - adjusts the label to not contain an H1 tag to be compliant
   </li>
-
   <li>
     Divider - provides a divider in the checkbox list - defaults to "or" but can
     be overridden
   </li>
-
   <li>Hints - contains hints for the overall checkox and each item</li>
-
   <li>
     Inline - displays the radio button list horizontally. This does revert to
     vertical on mobile view.
   </li>
-
   <li>Error - displays the error and configures all aria attributes</li>
 </ul>
+
+<h2>Conditional Elements</h2>
+
+<p>
+  A "Conditional Element" is a text input that allows a user to enter context
+  specific informtion when a radio button is PreSelected.
+</p>
+
+<p>The input contains the following extra options:</p>
+
+<ul>
+  <li>
+    Input Type - sets the type of input, configuration can be:
+    <ul>
+      <li>default - text</li>
+      <li>email</li>
+    </ul>
+  </li>
+  <li>
+    Input Mode - sets the mode of the input, configuration can be:
+    <ul>
+      <li>Not defined - default for text inputs</li>
+      <li>numeric</li>
+    </ul>
+  </li>
+  <li>Prefix - applies a styled prefix to the input</li>
+  <li>Suffix - applies a styled suffix to the input</li>
+  <li>Spell Check - applies the users browser spell checking</li>
+  <li>Auto Complete - allows an html auto-complete value to be applied</li>
+</ul>
+<h2>Helpers</h2>
+<p>
+  <b>MapRadioButtonsToSelected</b> is a function that will return the selected
+  value of the radio button list. It has two values:
+  <ul>
+    <li>radioValue - This is the value of the selected radio button</li>
+    <li>
+      conditionalValue - This is the value of the selected radio buttons
+      conditional element (if present)
+    </li>
+  </ul>
+</p>
+<p>
+  To use simply pass the entire data element returned from the RadioButtons and
+  use the returned value.
+</p>

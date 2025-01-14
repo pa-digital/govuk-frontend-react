@@ -1,4 +1,4 @@
-import { RadioButtonDataProps } from './RadioButtons';
+import { RadioButtonDataProps } from './RadioButtonCommon';
 
 export const WhereDoYouLiveData: RadioButtonDataProps[] = [
   {
@@ -80,5 +80,147 @@ export const WhereDoYouLiveExtData: RadioButtonDataProps[] = [
   {
     text: 'I am a British citizen living abroad',
     value: 'Abroad',
+  },
+];
+
+export const ConditionalContact: RadioButtonDataProps[] = [
+  {
+    text: 'Email',
+    value: 'email',
+    conditionalInput: {
+      context: 'contact-by-email',
+      identifier: 'emailAddress',
+      label: 'Email address',
+      inputType: 'email',
+    },
+  },
+  {
+    text: 'Phone',
+    value: 'phone',
+    conditionalInput: {
+      context: 'contact-by-phone',
+      identifier: 'phone',
+      label: 'Phone number',
+      inputMode: 'numeric',
+    },
+  },
+  {
+    text: 'Text message',
+    value: 'text',
+  },
+];
+
+export const PrePopulatedConditionalContact: RadioButtonDataProps[] = [
+  {
+    text: 'Email',
+    value: 'email',
+    checked: true,
+    conditionalInput: {
+      context: 'contact-by-email',
+      identifier: 'emailAddress',
+      label: 'Email address',
+      inputType: 'email',
+      value: 'test@test.com',
+    },
+  },
+  {
+    text: 'Phone',
+    value: 'phone',
+    conditionalInput: {
+      context: 'contact-by-phone',
+      identifier: 'phone',
+      label: 'Phone number',
+      inputMode: 'numeric',
+    },
+  },
+  {
+    text: 'Text message',
+    value: 'text',
+  },
+];
+
+export const PrefixedConditionalContact: RadioButtonDataProps[] = [
+  {
+    text: 'Sterling (GBP)',
+    value: 'gbp',
+    conditionalInput: {
+      context: 'payment-in-sterling',
+      identifier: 'sterling-payment',
+      label: 'Sterling (GBP) Amount',
+      prefix: '£',
+    },
+  },
+  {
+    text: 'Euro (EUR)',
+    value: 'eur',
+    conditionalInput: {
+      context: 'payment-in-euros',
+      identifier: 'euro-payment',
+      label: 'Euro (EUR) Amount',
+      prefix: '€',
+    },
+  },
+  {
+    text: 'US Dollars (USD)',
+    value: 'usd',
+    conditionalInput: {
+      context: 'payment-in-usd',
+      identifier: 'usd-payment',
+      label: 'US Dollars (USD) Amount',
+      prefix: '$',
+    },
+  },
+];
+
+export const SuffixedConditionalContact: RadioButtonDataProps[] = [
+  {
+    text: 'Miles Per Hour',
+    value: 'mph',
+    conditionalInput: {
+      context: 'speed-in-mph',
+      identifier: 'mph-speed',
+      label: 'Miles per hour',
+      suffix: 'mph',
+    },
+  },
+  {
+    text: 'Kilometers Per Hour',
+    value: 'kph',
+    conditionalInput: {
+      context: 'speed-in-kph',
+      identifier: 'kph-speed',
+      label: 'Kilometers per hour',
+      suffix: 'kph',
+    },
+  },
+];
+
+export const ErrorConditionalContact: RadioButtonDataProps[] = [
+  {
+    text: 'Email',
+    value: 'email',
+    checked: true,
+    conditionalInput: {
+      context: 'contact-by-email',
+      identifier: 'emailAddress',
+      label: 'Email address',
+      inputType: 'email',
+      value: '',
+      error: 'You must provide a valid email address',
+    },
+  },
+  {
+    text: 'Phone',
+    value: 'phone',
+    conditionalInput: {
+      context: 'contact-by-phone',
+      identifier: 'phone',
+      label: 'Phone number',
+      inputMode: 'numeric',
+    },
+  },
+  {
+    text: 'Text message',
+    value: 'text',
   },
 ];
