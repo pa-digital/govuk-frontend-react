@@ -13,7 +13,6 @@ function RadioButton({
   conditionalInput,
   onChange,
 }: RadioButtonProps) {
-  const [checkBoxChecked, setCheckBoxChecked] = useState(checked);
   const [conditionalTextValue, setConditionalTextValue] = useState(
     conditionalInput?.value || ''
   );
@@ -22,10 +21,13 @@ function RadioButton({
   const radioButtonAttr = {
     'aria-describedby': hint && `${identifier}-item-hint`,
     'aria-required': required,
+    'data-aria-controls': conditionalInput
+      ? `${identifier}-${conditionalInput.context}`
+      : undefined,
     required,
   };
   const conditionalWrapperAttr = {
-    id: `${identifier}-${conditionalInput?.context}`,
+    id: conditionalInput ? `${identifier}-${conditionalInput?.context}` : '',
     className: checked
       ? 'govuk-radios__conditional'
       : 'govuk-radios__conditional govuk-radios__conditional--hidden',
@@ -42,15 +44,13 @@ function RadioButton({
     spellCheck: conditionalInput?.spellcheck || false,
     autoComplete: conditionalInput?.autoComplete || undefined,
     className: 'govuk-input',
-    value: conditionalInput?.value || '',
+    value: conditionalTextValue,
     inputMode: conditionalInput?.inputMode || undefined,
     ref: conditionalInputRef,
   };
 
   const handleCheckChange = (e: ChangeEvent<HTMLInputElement>) => {
     const isChecked = e.target.checked;
-    setCheckBoxChecked(isChecked);
-
     const valueToSend = isChecked
       ? conditionalInput
         ? conditionalTextValue
@@ -67,19 +67,17 @@ function RadioButton({
   const handleConditionalInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     const newValue = e.target.value;
     setConditionalTextValue(newValue);
-    if (checkBoxChecked && conditionalInputRef.current) {
+    if (checked && conditionalInputRef.current) {
       onChange(newValue, value);
       conditionalInputRef.current.focus();
     }
   };
 
   useEffect(() => {
-    setCheckBoxChecked(checked);
-    if (conditionalInput?.value && conditionalInputRef.current) {
-      setConditionalTextValue(conditionalInput.value);
-      conditionalInputRef.current.focus();
+    if (conditionalInput) {
+      setConditionalTextValue(conditionalInput.value || '');
     }
-  }, [checked, conditionalInput?.value]);
+  }, [conditionalInput]);
 
   return (
     <>
@@ -90,7 +88,8 @@ function RadioButton({
           name={groupName}
           type="radio"
           value={value}
-          {...(checked && { checked })}
+          checked={checked}
+          aria-checked={checked ? 'true' : 'false'}
           {...radioButtonAttr}
           onChange={handleCheckChange}
         />
@@ -132,29 +131,10 @@ function RadioButton({
                 {conditionalInput.error}
               </p>
             )}
-            {conditionalInput.prefix || conditionalInput.suffix ? (
-              <div className="govuk-input__wrapper">
-                {conditionalInput.prefix && (
-                  <div className="govuk-input__prefix" aria-hidden="true">
-                    {conditionalInput.prefix}
-                  </div>
-                )}
-                <input
-                  {...conditionalAttr}
-                  onChange={handleConditionalInputChange}
-                />
-                {conditionalInput.suffix && (
-                  <div className="govuk-input__suffix" aria-hidden="true">
-                    {conditionalInput.suffix}
-                  </div>
-                )}
-              </div>
-            ) : (
-              <input
-                {...conditionalAttr}
-                onChange={handleConditionalInputChange}
-              />
-            )}
+            <input
+              {...conditionalAttr}
+              onChange={handleConditionalInputChange}
+            />
           </div>
         </div>
       )}

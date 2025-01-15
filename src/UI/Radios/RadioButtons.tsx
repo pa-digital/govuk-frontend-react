@@ -1,8 +1,7 @@
 import React, { memo, useEffect, useMemo, useRef, useState } from 'react';
-import { v4 as uuidv4 } from 'uuid';
 import RadioButton from './RadioButton';
 import RadioButtonDivider from './RadioButtonDivider';
-import { RadioButtonDataProps, RadioButtonsProps } from './RadioButtonCommon';
+import { RadioButtonsProps } from './RadioButtonCommon';
 
 export const RadioButtons = memo(
   ({
@@ -17,8 +16,19 @@ export const RadioButtons = memo(
     required,
     onValueChange,
   }: RadioButtonsProps) => {
-    const [radioButtonList, setRadioButtonList] =
-      useState<RadioButtonDataProps[]>(data);
+    const [radioButtonList, setRadioButtonList] = useState(
+      data.map((item) => ({
+        ...item,
+        checked: item.checked || false,
+        conditionalInput: item.conditionalInput
+          ? {
+              ...item.conditionalInput,
+              value: item.conditionalInput.value || '',
+            }
+          : undefined,
+      }))
+    );
+
     const isFirstRender = useRef(true);
     useMemo(() => {}, []);
 
@@ -61,27 +71,21 @@ export const RadioButtons = memo(
       setRadioButtonList((prevList) =>
         prevList.map((radio) => {
           if (radio.value === radioValue) {
-            const updatedRadio = {
+            return {
               ...radio,
-              checked: typeof value === 'boolean' ? value : true,
+              checked: true,
+              conditionalInput: radio.conditionalInput
+                ? {
+                    ...radio.conditionalInput,
+                    value:
+                      typeof value === 'string'
+                        ? value
+                        : radio.conditionalInput.value,
+                  }
+                : undefined,
             };
-
-            if (radio.conditionalInput) {
-              updatedRadio.conditionalInput = {
-                ...radio.conditionalInput,
-                value:
-                  typeof value === 'string'
-                    ? value
-                    : radio.conditionalInput.value || '',
-              };
-            }
-
-            return updatedRadio;
           }
-          return {
-            ...radio,
-            checked: false,
-          };
+          return { ...radio, checked: false };
         })
       );
     };
@@ -117,7 +121,10 @@ export const RadioButtons = memo(
           <div data-module="govuk-radios" {...radioButtonsWrapperAttr}>
             {radioButtonList.map((element, index) => {
               return element.divider ? (
-                <RadioButtonDivider text={element.text} key={uuidv4()} />
+                <RadioButtonDivider
+                  text={element.text}
+                  key={`divider-${index}`}
+                />
               ) : (
                 <RadioButton
                   identifier={`${identifier}-${index + 1}`}
@@ -125,7 +132,7 @@ export const RadioButtons = memo(
                   text={element.text}
                   value={element.value}
                   hint={element.hint}
-                  key={element.value}
+                  key={`element-${element.value}-${index}`}
                   checked={element.checked}
                   required={required}
                   conditionalInput={element.conditionalInput}

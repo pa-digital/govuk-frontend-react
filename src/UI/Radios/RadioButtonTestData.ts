@@ -1,3 +1,4 @@
+import { TextInputWidth } from '../Input/InputCommon';
 import { RadioButtonDataProps } from './RadioButtonCommon';
 
 export const WhereDoYouLiveData: RadioButtonDataProps[] = [
@@ -177,6 +178,7 @@ export const PrefixedConditionalContact: RadioButtonDataProps[] = [
       identifier: 'sterling-payment',
       label: 'Sterling (GBP) Amount',
       prefix: '£',
+      width: TextInputWidth.FluidThird,
     },
   },
   {
@@ -187,6 +189,7 @@ export const PrefixedConditionalContact: RadioButtonDataProps[] = [
       identifier: 'euro-payment',
       label: 'Euro (EUR) Amount',
       prefix: '€',
+      width: TextInputWidth.FluidThird,
     },
   },
   {
@@ -197,6 +200,7 @@ export const PrefixedConditionalContact: RadioButtonDataProps[] = [
       identifier: 'usd-payment',
       label: 'US Dollars (USD) Amount',
       prefix: '$',
+      width: TextInputWidth.FluidThird,
     },
   },
 ];
@@ -210,6 +214,7 @@ export const SuffixedConditionalContact: RadioButtonDataProps[] = [
       identifier: 'mph-speed',
       label: 'Miles per hour',
       suffix: 'mph',
+      width: TextInputWidth.FluidQuarter,
     },
   },
   {
@@ -220,6 +225,7 @@ export const SuffixedConditionalContact: RadioButtonDataProps[] = [
       identifier: 'kph-speed',
       label: 'Kilometers per hour',
       suffix: 'kph',
+      width: TextInputWidth.FluidQuarter,
     },
   },
 ];

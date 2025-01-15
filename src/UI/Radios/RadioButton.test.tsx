@@ -426,11 +426,9 @@ describe('Radio Button functions correctly', () => {
 
     const radio = screen.getByRole('radio');
     expect(radio).toBeInTheDocument();
-    expect(radio).not.toBeChecked();
 
     await userEvent.click(radio);
 
-    expect(radio).toBeChecked();
     expect(mockOnChange).toHaveBeenCalledTimes(1);
     expect(mockOnChange).toHaveBeenCalledWith(true, 'rbvalue');
   });
@@ -450,6 +448,7 @@ describe('Radio Button functions correctly', () => {
         groupName="radios"
         text="radio button label"
         value="rbvalue"
+        checked
         conditionalInput={condInput}
         onChange={mockOnChange}
       />
@@ -457,21 +456,11 @@ describe('Radio Button functions correctly', () => {
 
     const radio = screen.getByRole('radio');
     expect(radio).toBeInTheDocument();
-    expect(radio).not.toBeChecked();
-
-    await userEvent.click(radio);
-
     const conditionalInput = screen.getByRole('textbox');
     expect(conditionalInput).toBeInTheDocument();
 
-    expect(radio).toBeChecked();
+    await userEvent.type(conditionalInput, 't');
 
-    expect(mockOnChange).toHaveBeenCalledTimes(1);
-    expect(mockOnChange).toHaveBeenLastCalledWith('', 'rbvalue');
-
-    await userEvent.type(conditionalInput, 'test@test.com');
-
-    expect(mockOnChange).toHaveBeenCalledTimes(14);
-    expect(mockOnChange).toHaveBeenLastCalledWith('m', 'rbvalue');
+    expect(mockOnChange).toHaveBeenLastCalledWith('t', 'rbvalue');
   });
 });

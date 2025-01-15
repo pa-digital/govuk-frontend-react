@@ -12,7 +12,7 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {
-    identifier: 'input',
+    identifier: 'text-area-default',
     label: 'Standard label',
     onChange: fn(),
     onBlur: fn(),
@@ -21,7 +21,7 @@ export const Default: Story = {
 
 export const Hint: Story = {
   args: {
-    identifier: 'input',
+    identifier: 'text-area-hint',
     label: 'Hint label',
     hint: 'Hint to assist the user',
     onChange: fn(),
@@ -31,7 +31,7 @@ export const Hint: Story = {
 
 export const MultiQuestion: Story = {
   args: {
-    identifier: 'input',
+    identifier: 'text-area-multi',
     label: 'Multi Question label',
     multiQuestion: true,
     onChange: fn(),
@@ -41,7 +41,7 @@ export const MultiQuestion: Story = {
 
 export const Error: Story = {
   args: {
-    identifier: 'input',
+    identifier: 'text-area-error',
     label: 'Standard label',
     error: 'You must enter a value',
     onChange: fn(),

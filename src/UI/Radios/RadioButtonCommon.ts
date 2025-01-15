@@ -1,3 +1,5 @@
+import { TextInputWidth } from '../Input/InputCommon';
+
 export interface RadioButtonConditionalInputProps {
   context: string;
   identifier: string;
@@ -11,6 +13,7 @@ export interface RadioButtonConditionalInputProps {
   prefix?: string;
   suffix?: string;
   error?: string;
+  width?: TextInputWidth;
 }
 
 export interface RadioButtonDataProps {
@@ -55,8 +58,6 @@ export interface RadioButtonValue {
 export const MapRadioButtonsToSelected = (
   data: RadioButtonDataProps[]
 ): RadioButtonValue | undefined => {
-  if (!data) return undefined;
-
   const selectedRadio = data.find((radio) => radio.checked);
 
   return selectedRadio

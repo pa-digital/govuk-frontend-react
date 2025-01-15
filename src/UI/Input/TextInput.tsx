@@ -22,12 +22,14 @@ export function TextInput({
   value,
   onChange,
   onBlur,
+  noContainer,
 }: TextInputProps) {
   const containerAttr = {
     className: error
       ? 'govuk-form-group govuk-form-group--error'
       : 'govuk-form-group',
   };
+
   const inputAttr = {
     required,
     'aria-required': required,
@@ -41,6 +43,7 @@ export function TextInput({
     'aria-disabled': disabled,
     inputMode,
   };
+
   if (width) {
     inputAttr.className += ` ${TextInputWidthClass.get(width)}`;
   }
@@ -70,13 +73,14 @@ export function TextInput({
   } else if (multiQuestion) {
     assignedClass = 'govuk-label';
   }
+
   const labelAttr = {
     className: assignedClass,
     id: `${identifier}-label`,
   };
 
-  return (
-    <div {...containerAttr}>
+  const content = (
+    <>
       {multiQuestion ? (
         <label htmlFor={identifier} {...labelAttr}>
           {label}
@@ -132,6 +136,8 @@ export function TextInput({
           onBlur={onBlur}
         />
       )}
-    </div>
+    </>
   );
+
+  return noContainer ? content : <div {...containerAttr}>{content}</div>;
 }
