@@ -12,18 +12,8 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {
-    identifier: 'input',
+    identifier: 'text-input-default',
     label: 'Standard label',
-    onChange: fn(),
-    onBlur: fn(),
-  },
-};
-
-export const Password: Story = {
-  args: {
-    identifier: 'input',
-    label: 'Password label',
-    inputType: 'password',
     onChange: fn(),
     onBlur: fn(),
   },
@@ -31,7 +21,7 @@ export const Password: Story = {
 
 export const MultiQuestion: Story = {
   args: {
-    identifier: 'input',
+    identifier: 'text-input-multi',
     label: 'Multi Question label',
     multiQuestion: true,
     onChange: fn(),
@@ -41,7 +31,7 @@ export const MultiQuestion: Story = {
 
 export const Hint: Story = {
   args: {
-    identifier: 'input',
+    identifier: 'text-input-hint',
     label: 'Hint label',
     hint: 'Hint to assist the user',
     onChange: fn(),
@@ -51,7 +41,7 @@ export const Hint: Story = {
 
 export const Prefix: Story = {
   args: {
-    identifier: 'input',
+    identifier: 'text-input-prefix',
     label: 'How much does it cost, in pounds?',
     prefix: '£',
     width: 5,
@@ -62,7 +52,7 @@ export const Prefix: Story = {
 
 export const Suffix: Story = {
   args: {
-    identifier: 'input',
+    identifier: 'text-input-suffix',
     label: 'What is the weight, in kilo grammes?',
     suffix: 'kg',
     width: 4,
@@ -73,7 +63,7 @@ export const Suffix: Story = {
 
 export const Error: Story = {
   args: {
-    identifier: 'input',
+    identifier: 'text-input-error',
     label: 'Standard label',
     error: 'You must enter a value',
     onChange: fn(),

@@ -12,7 +12,7 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {
-    identifier: 'input',
+    identifier: 'text-counter-default',
     label: 'Standard label',
     maxCount: 200,
     counterType: 'character',
@@ -23,7 +23,7 @@ export const Default: Story = {
 
 export const Word: Story = {
   args: {
-    identifier: 'input',
+    identifier: 'text-counter-word',
     label: 'Hint label',
     maxCount: 50,
     counterType: 'word',
@@ -34,7 +34,7 @@ export const Word: Story = {
 
 export const Threshold: Story = {
   args: {
-    identifier: 'input',
+    identifier: 'text-counter-threshold',
     label: 'Threshold of 10',
     maxCount: 200,
     threshold: 10,
@@ -46,7 +46,7 @@ export const Threshold: Story = {
 
 export const ExceededCountError: Story = {
   args: {
-    identifier: 'input',
+    identifier: 'text-counter-exceeded',
     label: 'label',
     maxCount: 5,
     counterType: 'character',
@@ -58,7 +58,7 @@ export const ExceededCountError: Story = {
 
 export const Error: Story = {
   args: {
-    identifier: 'input',
+    identifier: 'text-counter-error',
     label: 'Standard label',
     error: 'You must enter a value',
     counterType: 'character',

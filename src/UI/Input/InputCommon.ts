@@ -75,6 +75,7 @@ export interface TextInputProps extends NonPasswordBaseInputProps {
   autoComplete?: string;
   width?: TextInputWidth;
   inErrorState?: boolean;
+  noContainer?: boolean;
   onChange: (value: ChangeEvent<HTMLInputElement>) => void;
   onBlur: (value: FocusEvent<HTMLInputElement>) => void;
 }

@@ -43,7 +43,7 @@ export {
 } from './UI/Input/InputCommon';
 export { Inset, InsetProps } from './UI/Inset/Inset';
 export { Navigation } from './UI/Navigation/Navigation';
-export { DetachedNavigation } from './UI/Navigation/DetachedNavigation';
+export { ServiceNavigation } from './UI/Navigation/ServiceNavigation';
 export {
   NavigationProps,
   NavigationLink,
